@@ -1,0 +1,6 @@
+.vim/
+.git/
+node_modules/
+build
+*.log*
+yarn.lock
