@@ -12,7 +12,7 @@ function App() {
   }, [count, setCount]);
   // Return the App component.
   return (
-    <div className="App mt-5">
+    <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>

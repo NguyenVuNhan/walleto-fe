@@ -1,4 +1,5 @@
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const CompressionPlugin = require("compression-webpack-plugin");
 
 module.exports = {
   plugins: [
@@ -11,6 +12,7 @@ module.exports = {
       {
         extendConfig: (config) => {
           config.plugins.push(new CleanWebpackPlugin());
+          config.plugins.push(new CompressionPlugin());
           return config;
         },
       },
