@@ -1,3 +1,5 @@
+/** @type {import("snowpack").SnowpackUserConfig } */
+
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
 
@@ -18,6 +20,7 @@ module.exports = {
       },
     ],
   ],
+  routes: [{ match: "routes", src: ".*", dest: "/index.html" }],
   mount: {
     public: { url: "/", static: true },
     src: { url: "/" },
