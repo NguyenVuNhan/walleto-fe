@@ -2,6 +2,7 @@
 
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   plugins: [
@@ -15,6 +16,14 @@ module.exports = {
         extendConfig: (config) => {
           config.plugins.push(new CleanWebpackPlugin());
           config.plugins.push(new CompressionPlugin());
+          config.plugins.push(
+            new HtmlWebpackPlugin({
+              template: `${__dirname}/public/index.html`,
+              favicon: `${__dirname}/public/favicon.ico`,
+              minify: true,
+              title: "Walleto",
+            })
+          );
           return config;
         },
       },
@@ -22,10 +31,7 @@ module.exports = {
   ],
   routes: [{ match: "routes", src: ".*", dest: "/index.html" }],
   mount: {
-    public: { url: "/", static: true },
-    src: { url: "/" },
-  },
-  buildOptions: {
-    baseUrl: ".",
+    public: "/",
+    src: "/",
   },
 };
