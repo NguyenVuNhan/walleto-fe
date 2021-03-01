@@ -1,10 +1,11 @@
 import React, { FC, lazy, Suspense } from "react";
 import { Route, Router, Switch } from "react-router-dom";
+import Loading from "../components/organisms/Loading";
 import AuthTemplate from "../components/templates/auth.template";
-import Loading from "../pages/Loading";
 import { history } from "../provider";
 
 const Login = lazy(() => import("../pages/Login"));
+const Register = lazy(() => import("../pages/Register"));
 
 const Routes: FC = () => {
   return (
@@ -17,6 +18,15 @@ const Routes: FC = () => {
             component={() => (
               <Suspense fallback={<Loading />}>
                 <Login />
+              </Suspense>
+            )}
+          />
+          <Route
+            exact
+            path="/register"
+            component={() => (
+              <Suspense fallback={<Loading />}>
+                <Register />
               </Suspense>
             )}
           />
