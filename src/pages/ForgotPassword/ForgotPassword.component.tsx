@@ -6,7 +6,7 @@ interface Props {}
 
 const Register: FC<Props> = () => {
   return (
-    <form className="w-full md:w-1/2 flex flex-col">
+    <form className="w-full flex flex-col">
       <TextField label="Email" />
       <button className="w-full bg-blue-500 text-white p-3 rounded-lg font-semibold text-lg">
         Reset password

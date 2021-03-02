@@ -9,7 +9,10 @@ const AuthTemplate: FC<Props> = ({ children }) => {
 
   return (
     <div className="h-screen w-screen bg-gradient-to-r from-blue-500 via-yellow-400 to-green-400 flex items-center justify-center flex-wrap sm:p-4">
-      <div className="bg-white w-full max-w-screen-lg rounded-2xl overflow-hidden flex flex-wrap justify-between py-10 sm:py-32 px-4 sm:px-10 md:px-20">
+      <div
+        className="bg-white w-full max-w-screen-lg rounded-2xl overflow-hidden flex flex-wrap justify-between px-4 items-center sm:px-10 md:px-20"
+        style={{ height: 500 }}
+      >
         <div
           ref={ref}
           data-active={true}
