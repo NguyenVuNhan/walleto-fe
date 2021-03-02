@@ -12,7 +12,9 @@ const Login: FC<Props> = () => {
       <button className="w-full bg-blue-500 text-white p-3 rounded-lg font-semibold text-lg">
         Login
       </button>
-      <a className="text-blue-400 text-center my-2">Forgot Password?</a>
+      <Link to="/forgot_password" className="text-blue-400 text-center my-2">
+        Forgot Password?
+      </Link>
       <Link
         to="/register"
         className="w-full bg-green-400 mt-8 mb-4 text-white p-3 rounded-lg font-semibold text-lg text-center text-center"
