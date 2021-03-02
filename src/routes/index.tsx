@@ -32,10 +32,12 @@ const Routes: FC = () => {
               exact
               path={route.path}
               className="w-full md:w-1/2"
-              initial={{ opacity: 0, x: "100%" }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, y: "150%" }}
-              transition={{ type: "tween", ease: "anticipate" }}
+              animateProps={{
+                initial: { opacity: 0, x: "100%" },
+                animate: { opacity: 1, x: 0 },
+                exit: { opacity: 0, y: "150%" },
+                transition: { type: "tween", ease: "anticipate" },
+              }}
             >
               <Suspense fallback={<Loading />}>{<route.component />}</Suspense>
             </RouteTransition>

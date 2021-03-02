@@ -2,10 +2,24 @@ import { HTMLMotionProps, motion } from "framer-motion";
 import React, { FC } from "react";
 import { Route, RouteProps } from "react-router-dom";
 
-interface Props extends HTMLMotionProps<"div">, Omit<RouteProps, "children"> {}
+interface Props {
+  className?: string;
+  exact: boolean;
+  path: string;
+  routeProps?: RouteProps;
+  animateProps?: HTMLMotionProps<"div">;
+}
 
-export const RouteTransition: FC<Props> = ({ children, ...rest }) => (
-  <Route {...(rest as RouteProps)}>
-    <motion.div {...(rest as HTMLMotionProps<"div">)}>{children}</motion.div>
+export const RouteTransition: FC<Props> = ({
+  children,
+  className,
+  exact,
+  path,
+  ...rest
+}) => (
+  <Route exact={exact} path={path} {...rest.routeProps}>
+    <motion.div className={className} {...rest.animateProps}>
+      {children}
+    </motion.div>
   </Route>
 );
