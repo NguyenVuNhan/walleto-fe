@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/NguyenVuNhan/walleto-be">
+  <a href="https://github.com/NguyenVuNhan/walleto-fe">
     <img src="src/assets/logo-full.svg" alt="Logo" height="80">
   </a>
 
@@ -83,4 +83,4 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Nhan Vu Nguyen - nguyenvunhan1999@gmail.com
 
-Project Link: [https://github.com/NguyenVuNhan/walleto-be](https://github.com/NguyenVuNhan/walleto-fe)
+Project Link: [https://github.com/NguyenVuNhan/walleto-fe](https://github.com/NguyenVuNhan/walleto-fe)
