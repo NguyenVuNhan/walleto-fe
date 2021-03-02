@@ -2,7 +2,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/NguyenVuNhan/walleto-be">
-    <img src="src/assets/logo-full.svg" alt="Logo" width="80" height="80">
+    <img src="src/assets/logo-full.svg" alt="Logo" height="80">
   </a>
 
   <h3 align="center">Walleto - Manage your expenses</h3>
