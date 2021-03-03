@@ -1,14 +1,24 @@
 import React, { FC } from "react";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import TextField from "src/components/atoms/TextField";
 
-interface Props {}
+interface Props {
+  onLogin(data: LoginForm): void;
+}
 
-const Login: FC<Props> = () => {
+const Login: FC<Props> = ({ onLogin }) => {
+  const { handleSubmit, register } = useForm<LoginForm>();
+
   return (
-    <form className="w-full flex flex-col">
-      <TextField label="Email or User Name" />
-      <TextField label="Password" type="password" />
+    <form className="w-full flex flex-col" onSubmit={handleSubmit(onLogin)}>
+      <TextField label="Email or User Name" name="name_email" ref={register} />
+      <TextField
+        label="Password"
+        type="password"
+        name="password"
+        ref={register}
+      />
       <button className="w-full bg-blue-500 text-white p-3 rounded-lg font-semibold text-lg">
         Login
       </button>

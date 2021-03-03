@@ -24,21 +24,21 @@ const AuthRoute = () => {
   return (
     <AuthTemplate>
       <AnimatedRoutes exitBeforeEnter>
-        <motion.div
-          className="w-full md:w-1/2"
-          initial={{ opacity: 0, x: "100%" }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, y: "100%" }}
-          transition={{ type: "tween", ease: "anticipate", duration: 0.5 }}
-        >
-          {authRoutes.map((route, index) => (
-            <Route key={index} exact path={route.path}>
+        {authRoutes.map((route, index) => (
+          <Route key={index} exact path={route.path}>
+            <motion.div
+              className="w-full md:w-1/2"
+              initial={{ opacity: 0, x: "100%" }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, y: "100%" }}
+              transition={{ type: "tween", ease: "anticipate", duration: 0.5 }}
+            >
               <Suspense fallback={<SuspenseFallback />}>
                 {<route.component />}
               </Suspense>
-            </Route>
-          ))}
-        </motion.div>
+            </motion.div>
+          </Route>
+        ))}
       </AnimatedRoutes>
     </AuthTemplate>
   );

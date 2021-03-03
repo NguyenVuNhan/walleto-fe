@@ -1,11 +1,13 @@
 import React from "react";
+import Loading from "src/pages/Loading";
 import Routes from "src/routes";
 
 function App() {
   return (
-    <div className="w-screen h-20">
+    <>
       <Routes />
-    </div>
+      <Loading auto />
+    </>
   );
 }
 

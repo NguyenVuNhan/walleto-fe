@@ -1,7 +1,10 @@
 import { motion, Transition } from "framer-motion";
 import React, { FC } from "react";
 
-interface Props {}
+interface Props {
+  isLoading: boolean;
+  auto?: boolean;
+}
 
 const transition: Transition = {
   duration: 0.6,
@@ -9,7 +12,11 @@ const transition: Transition = {
   repeat: Infinity,
 };
 
-const Loading: FC<Props> = () => {
+const Loading: FC<Props> = ({ isLoading, auto = false }) => {
+  if (auto && !isLoading) {
+    return <></>;
+  }
+
   return (
     <div className="fixed top-0 left-0 z-50 w-screen h-screen flex items-center justify-center bg-gray-600 bg-opacity-90">
       <div className="bg-white border py-2 px-5 rounded-lg flex items-center flex-col">

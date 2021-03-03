@@ -1,4 +1,4 @@
 interface LoginForm {
-  email: string;
+  name_email: string;
   password: string;
 }
