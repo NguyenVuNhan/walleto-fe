@@ -4,7 +4,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import App from "./app/App.jsx";
-import { clearAuthToken, setAuthToken } from "./helpers/auth/token";
+import { clearAuthToken, setAuthToken } from "src/helpers/auth";
 import "./index.css";
 import { store } from "./provider";
 

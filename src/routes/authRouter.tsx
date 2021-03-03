@@ -1,22 +1,22 @@
 import React, { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
-import { AnimatedRoutes } from "../components/templates/animatedRoutes.template";
-import AuthTemplate from "../components/templates/auth.template";
+import { AnimatedRoutes } from "src/components/templates/animatedRoutes.template";
+import AuthTemplate from "src/components/templates/auth.template";
 import { Route } from "react-router-dom";
-import SuspenseFallback from "../components/organisms/SuspenseFallback";
+import SuspenseFallback from "src/components/organisms/SuspenseFallback";
 
 const authRoutes = [
   {
     path: "/login",
-    component: lazy(() => import("../pages/Login")),
+    component: lazy(() => import("src/pages/Login")),
   },
   {
     path: "/register",
-    component: lazy(() => import("../pages/Register")),
+    component: lazy(() => import("src/pages/Register")),
   },
   {
     path: "/forgot_password",
-    component: lazy(() => import("../pages/ForgotPassword")),
+    component: lazy(() => import("src/pages/ForgotPassword")),
   },
 ];
 

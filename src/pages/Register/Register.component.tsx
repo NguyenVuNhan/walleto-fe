@@ -1,10 +1,8 @@
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
-import TextField from "../../components/atoms/TextField";
+import TextField from "src/components/atoms/TextField";
 
-interface Props {}
-
-const Register: FC<Props> = () => {
+const Register: FC = () => {
   return (
     <form className="w-full flex flex-col">
       <TextField label="User Name" />

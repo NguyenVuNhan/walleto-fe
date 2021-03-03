@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
-import TextField from "../../components/atoms/TextField";
+import TextField from "src/components/atoms/TextField";
 
 interface Props {}
 

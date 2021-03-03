@@ -1,6 +1,6 @@
 import React, { FC } from "react";
-import login from "../../assets/login.png";
-import { useTilt } from "../../hooks";
+import login from "src/assets/login.png";
+import { useTilt } from "src/hooks";
 
 interface Props {}
 
