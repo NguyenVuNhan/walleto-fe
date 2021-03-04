@@ -1,11 +1,12 @@
 import React, { ChangeEvent, forwardRef, InputHTMLAttributes } from "react";
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
+  error?: string;
   label?: string;
 }
 
 const TextField = forwardRef<HTMLInputElement, Props>(
-  ({ label, name, onChange, ...rest }, ref) => {
+  ({ label, name, onChange, error, ...rest }, ref) => {
     const [active, setActive] = React.useState(false);
 
     const handleActivation = (e: ChangeEvent<HTMLInputElement>) => {
@@ -22,8 +23,11 @@ const TextField = forwardRef<HTMLInputElement, Props>(
           ref={ref}
           className={[
             "transition-all duration-200 ease-in-out p-3 w-full",
-            "border border-gray-400 focus:outline-none rounded-md focus:ring-1 ring-cyan-500",
+            "border focus:outline-none rounded-md focus:ring-1",
             active ? "pt-7" : "",
+            error
+              ? "border-red-500 ring-red-500"
+              : "border-gray-400 ring-cyan-500",
           ].join(" ")}
           id={name}
           name={name}
@@ -32,13 +36,15 @@ const TextField = forwardRef<HTMLInputElement, Props>(
         <label
           className={[
             "transition-all duration-200 ease-in-out",
-            "text-gray-900 absolute top-0 left-0 flex items-center text-opacity-50 p-3",
+            "absolute top-0 left-0 flex items-center text-opacity-50 p-3",
             active ? "text-xs" : "",
+            error ? "text-red-500" : "text-gray-900",
           ].join(" ")}
           htmlFor={name}
         >
           {label}
         </label>
+        {error && <p className="text-sm ml-2 text-red-500">{error}</p>}
       </div>
     );
   }

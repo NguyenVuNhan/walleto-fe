@@ -19,11 +19,7 @@ function* onRegister({ payload }: types.RegisterAction) {
 
     // validate response
     if (!res.success || !res.data) {
-      yield put(
-        actions.registerFailure({
-          errors: [{ msg: res.message, param: "error" }],
-        })
-      );
+      yield put(actions.registerFailure({ msg: res.message }));
       return;
     }
 

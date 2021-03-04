@@ -20,9 +20,7 @@ function* onLogin({ payload }: types.LoginAction) {
 
     // validate response
     if (!res.success || !res.data) {
-      yield put(
-        actions.loginFailure({ errors: [{ msg: res.message, param: "Error" }] })
-      );
+      yield put(actions.loginFailure({ msg: res.message }));
       return;
     }
 
@@ -34,9 +32,7 @@ function* onLogin({ payload }: types.LoginAction) {
     yield put(actions.loginSuccess(res.data.user));
     // forwardTo("/home");
   } catch (err) {
-    console.log("error");
-    console.log(actions.loginFailure(err.response.data));
-    yield put(actions.loginFailure(err.response.data));
+    yield put(actions.loginFailure(err.response.data.data));
   }
 }
 

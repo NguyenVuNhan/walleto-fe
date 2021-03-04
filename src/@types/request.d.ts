@@ -9,7 +9,10 @@ interface BasePayload {
 }
 
 interface BaseError {
-  errors: { msg: string; param: string }[];
+  msg: string;
+  errors?: {
+    [key: string]: string;
+  };
 }
 
 interface BaseRequestAction<T = string> {
