@@ -1,9 +1,13 @@
 import { loginTypes } from "src/pages/Login";
+import { registerTypes } from "src/pages/Register";
 
-type LoadingAction = loginTypes.LoginRequestAction;
+type LoadingAction =
+  | loginTypes.LoginRequestAction
+  | registerTypes.RegisterRequestAction;
 
 export interface LoadingState {
   [loginTypes.LOGIN]?: boolean;
+  [registerTypes.REGISTER]?: boolean;
 }
 
 const getErrorMatches = (actionType: string) =>

@@ -1,9 +1,13 @@
 import { loginTypes } from "src/pages/Login";
+import { registerTypes } from "src/pages/Register";
 
-export type ErrorAction = loginTypes.LoginFailureAction;
+export type ErrorAction =
+  | loginTypes.LoginFailureAction
+  | registerTypes.RegisterFailureAction;
 
 export interface ErrorState {
   [loginTypes.LOGIN]?: loginTypes.LoginFailureAction["error"];
+  [registerTypes.REGISTER]?: loginTypes.LoginFailureAction["error"];
 }
 
 const getErrorMatches = (actionType: string) =>
