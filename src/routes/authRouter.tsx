@@ -22,10 +22,10 @@ const authRoutes = [
 
 const AuthRoute = () => {
   return (
-    <AuthTemplate>
-      <AnimatedRoutes exitBeforeEnter>
-        {authRoutes.map((route, index) => (
-          <Route key={index} exact path={route.path}>
+    <AnimatedRoutes exitBeforeEnter>
+      {authRoutes.map((route, index) => (
+        <Route key={index} exact path={route.path}>
+          <AuthTemplate>
             <motion.div
               className="w-full md:w-1/2"
               initial={{ opacity: 0, x: "100%" }}
@@ -37,10 +37,10 @@ const AuthRoute = () => {
                 {<route.component />}
               </Suspense>
             </motion.div>
-          </Route>
-        ))}
-      </AnimatedRoutes>
-    </AuthTemplate>
+          </AuthTemplate>
+        </Route>
+      ))}
+    </AnimatedRoutes>
   );
 };
 

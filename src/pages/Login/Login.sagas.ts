@@ -30,7 +30,7 @@ function* onLogin({ payload }: types.LoginAction) {
 
     // Success
     yield put(actions.loginSuccess(res.data.user));
-    // forwardTo("/home");
+    forwardTo("/home");
   } catch (err) {
     yield put(actions.loginFailure(err.response.data.data));
   }
