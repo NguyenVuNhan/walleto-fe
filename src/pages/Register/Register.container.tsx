@@ -1,8 +1,13 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
+import { RootState } from "src/reducer/rootReducer";
 import { register } from "./Register.actions";
 import RegisterComponent from "./Register.component";
-import { RegisterActionType } from "./Register.types";
+import { REGISTER, RegisterActionType } from "./Register.types";
+
+const mapStateToProps = ({ error }: RootState) => {
+  return { error: error[REGISTER] };
+};
 
 const mapDispatchToProps = (dispatch: Dispatch<RegisterActionType>) => ({
   onRegister: (data: RegisterForm) => {
@@ -10,4 +15,4 @@ const mapDispatchToProps = (dispatch: Dispatch<RegisterActionType>) => ({
   },
 });
 
-export default connect(null, mapDispatchToProps)(RegisterComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterComponent);

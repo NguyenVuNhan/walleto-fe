@@ -20,10 +20,10 @@ const Login: FC<Props> = ({ error, onLogin }) => {
       <TextField
         label="Email or User Name"
         name="name_email"
-        ref={register({ required: true })}
+        ref={register({ required: "User name or email is required" })}
         error={
-          errors.name_email?.type === "required"
-            ? "User name or email is required"
+          errors.name_email
+            ? errors.name_email.message
             : error?.errors?.name_email
         }
       />
@@ -31,11 +31,9 @@ const Login: FC<Props> = ({ error, onLogin }) => {
         label="Password"
         type="password"
         name="password"
-        ref={register({ required: true })}
+        ref={register({ required: "Password is required" })}
         error={
-          errors.password?.type === "required"
-            ? "Password is required"
-            : error?.errors?.password
+          errors.password ? errors.password.message : error?.errors?.password
         }
       />
       <button className="w-full bg-blue-500 text-white p-3 rounded-lg font-semibold text-lg">
