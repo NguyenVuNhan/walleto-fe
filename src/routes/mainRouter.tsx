@@ -1,9 +1,7 @@
-import React from "react";
+import React, { lazy } from "react";
 import { Route, Switch } from "react-router";
 
-const Home = () => {
-  return <div>Home</div>;
-};
+const Home = lazy(() => import("src/pages/Home"));
 
 const MainRouter = () => {
   return (
