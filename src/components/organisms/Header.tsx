@@ -37,7 +37,7 @@ const Header = memo<Props>(() => {
               <span className="sr-only">Open user menu</span>
               <AccountCircleIcon />
             </IconButton>
-            <Menu open={open}>
+            <Menu open={open} onClose={() => setOpen(false)}>
               <MenuItem>Your Profile</MenuItem>
               <MenuItem>Logout</MenuItem>
             </Menu>
