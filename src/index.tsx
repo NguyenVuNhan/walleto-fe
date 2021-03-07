@@ -23,7 +23,6 @@ if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
   const decoded = jwt_decode<Token & User>(localStorage.jwtToken);
 
-  console.log(decoded);
   store.dispatch(loginActions.loginSuccess(decoded as User));
 
   const currentTime = Date.now() / 1000;

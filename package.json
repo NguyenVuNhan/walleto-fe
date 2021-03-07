@@ -10,11 +10,10 @@
   ],
   "homepage": "/",
   "scripts": {
-    "dev": "yarn watch:css && snowpack dev",
-    "build": "yarn watch:css && snowpack build",
+    "dev": "snowpack dev",
+    "build": "snowpack build",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
-    "lint": "prettier --check \"src/**/*.{js,jsx,ts,tsx}\"",
-    "watch:css": "postcss src/assets/tailwind.css -o src/index.css"
+    "lint": "prettier --check \"src/**/*.{js,jsx,ts,tsx}\""
   },
   "devDependencies": {
     "@snowpack/plugin-dotenv": "^2.0.5",

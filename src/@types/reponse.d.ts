@@ -3,3 +3,8 @@ interface User {
   name: string;
   email: string;
 }
+
+interface TransactionOverView {
+  name: string;
+  value: number;
+}

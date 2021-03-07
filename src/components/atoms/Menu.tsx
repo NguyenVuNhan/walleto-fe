@@ -1,6 +1,6 @@
 import { HTMLMotionProps, motion, Variants } from "framer-motion";
 import React, { FC } from "react";
-import useClickOutside from "src/hooks/useClickOutside";
+import { useClickOutside } from "src/hooks";
 
 interface Props extends HTMLMotionProps<"div"> {
   open?: boolean;

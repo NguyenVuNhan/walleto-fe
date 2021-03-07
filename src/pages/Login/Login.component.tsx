@@ -12,7 +12,6 @@ interface Props {
 
 const Login: FC<Props> = ({ error, onLogin }) => {
   const { handleSubmit, register, errors } = useForm<LoginForm>();
-  console.log(error);
 
   return (
     <form className="w-full flex flex-col" onSubmit={handleSubmit(onLogin)}>
