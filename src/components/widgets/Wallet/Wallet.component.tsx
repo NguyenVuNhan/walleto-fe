@@ -1,6 +1,5 @@
 import React, { FC, useState } from "react";
 import { Cell, Label, Pie, PieChart, ResponsiveContainer } from "recharts";
-import { PolarViewBox } from "recharts/types/util/types";
 import Button from "src/components/atoms/Button";
 import DetailsPieActive from "./components/DetailsPieActive";
 import GeneralPie from "./components/GeneralPie";

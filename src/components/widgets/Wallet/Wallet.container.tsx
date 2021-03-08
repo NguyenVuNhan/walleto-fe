@@ -36,10 +36,9 @@ const generalData: TransactionOverView[] = [
   },
 ];
 
-const mapStateToProps = (
-  {}: RootState,
-  props: Omit<Props, "detailsData" | "generalData">
-) => {
+type InnerProps = Omit<Props, "detailsData" | "generalData">;
+
+const mapStateToProps = ({}: RootState, props: InnerProps) => {
   return { ...props, generalData, detailsData };
 };
 
