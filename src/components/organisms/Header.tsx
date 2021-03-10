@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import React, { memo, MouseEventHandler, useState } from "react";
 import MenuIcon from "src/assets/Icons/Menu";
 import logo from "src/assets/logo.svg";
 import logoFull from "src/assets/logo-full.svg";
@@ -7,15 +7,17 @@ import MenuItem from "src/components/atoms/MenuItem";
 import Menu from "src/components/atoms/Menu";
 import IconButton from "src/components/atoms/IconButton";
 
-interface Props {}
+interface Props {
+  onMenuClick?: MouseEventHandler;
+}
 
-const Header = memo<Props>(() => {
+const Header = memo<Props>(({ onMenuClick }) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="flex justify-between w-full p-2 bg-blue-300 shadow-md">
+    <header className="flex text-white justify-between w-full p-2 bg-gray-600 shadow-md">
       <div className="flex">
-        <IconButton>
+        <IconButton onClick={onMenuClick}>
           <MenuIcon />
         </IconButton>
         <img className="block h-10 mx-2 sm:hidden" src={logo} alt="walleto" />

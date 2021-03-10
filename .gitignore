@@ -4,5 +4,3 @@ node_modules/
 build
 *.log*
 yarn.lock
-
-src/index.css
