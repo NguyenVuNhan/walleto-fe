@@ -1,9 +1,9 @@
 import React, { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
-import { AnimatedRoutes } from "src/components/templates/animatedRoutes.template";
 import AuthTemplate from "src/components/templates/auth.template";
 import { Route } from "react-router-dom";
-import SuspenseFallback from "src/components/organisms/SuspenseFallback";
+import SuspenseFallback from "src/components/molecules/SuspenseFallback";
+import { AnimatedRoutes } from "src/components/molecules/animatedRoutes";
 
 const authRoutes = [
   {
