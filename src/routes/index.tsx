@@ -9,7 +9,7 @@ const AuthRoute = lazy(() => import("./authRouter"));
 const MainRouter = lazy(() => import("./mainRouter"));
 
 const Routes: FC = () => {
-  const authenticated = useSelector<RootState>(
+  const isAuthenticated = useSelector<RootState, boolean>(
     (state) => state.auth.authenticated
   );
 
@@ -21,7 +21,7 @@ const Routes: FC = () => {
       <Suspense fallback={<Loading />}>
         <MainRouter />
       </Suspense>
-      <Redirect to={authenticated ? "/" : "/login"} />
+      <Redirect to={isAuthenticated ? "/" : "/login"} />
     </Router>
   );
 };
