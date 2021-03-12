@@ -3,12 +3,16 @@
 @tailwind utilities;
 
 @layer components {
+  .widget-base {
+    @apply rounded-xl bg-white shadow-lg;
+  }
+
   .list-item {
-    @apply flex items-center pl-2 py-2 hover:bg-gray-500;
+    @apply flex items-center py-2 pl-2 hover:bg-gray-500;
   }
 
   .drawer {
-    @apply h-full overflow-hidden flex flex-col;
+    @apply flex flex-col h-full overflow-hidden;
   }
 
   .drawer .list-item {

@@ -23,9 +23,7 @@ const WalletWidget: FC<Props> = ({ className, generalData, detailsData }) => {
   };
 
   return (
-    <div
-      className={[className, "bg-white col-span-3 rounded-xl sm:p-2"].join(" ")}
-    >
+    <div className={[className, "widget-base"].join(" ")}>
       <ResponsiveContainer
         height="100%"
         minHeight={150}

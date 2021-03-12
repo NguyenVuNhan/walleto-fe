@@ -21,10 +21,9 @@ export interface Props {
 const NetIncomeWidget: FC<Props> = ({ className, data }) => {
   return (
     <div
-      className={[
-        className,
-        "bg-white col-span-full sm:col-span-6 rounded-xl sm:p-2",
-      ].join(" ")}
+      className={[className, "col-span-full sm:col-span-6 widget-base"].join(
+        " "
+      )}
     >
       <ResponsiveContainer
         height="100%"
@@ -80,7 +79,7 @@ const NetIncomeWidget: FC<Props> = ({ className, data }) => {
               const { payload } = props;
 
               return (
-                <ul className="p-0 m-0 flex items-center justify-center">
+                <ul className="flex items-center justify-center p-0 m-0">
                   {(payload as Payload[]).map((entry, index) => {
                     return entry.type !== "rect" ? null : (
                       <li

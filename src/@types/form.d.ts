@@ -9,3 +9,5 @@ interface RegisterForm {
   password: string;
   cpassword: string;
 }
+
+interface TransactionsForm {}
