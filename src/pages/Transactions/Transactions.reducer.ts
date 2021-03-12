@@ -1,7 +1,7 @@
 import * as types from "./Transactions.types";
 
 export interface TransactionsState {
-  [key: string]: { total: number; transactions: Transaction[] };
+  [key: string]: { total: number; transactions: ShortTransaction[] };
 }
 
 type AuthActionType = types.GetTransactionsActionType;

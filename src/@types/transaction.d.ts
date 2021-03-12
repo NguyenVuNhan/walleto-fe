@@ -1,4 +1,4 @@
-interface Transaction {
+interface ShortTransaction {
   id: number;
   note: string;
   amount: number;

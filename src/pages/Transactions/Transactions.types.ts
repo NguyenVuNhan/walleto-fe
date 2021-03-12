@@ -1,7 +1,7 @@
 export const GET_TRANSACTIONS = "auth/getTransactions/GET_TRANSACTIONS";
 export interface GetTransactionsAction {
   type: typeof GET_TRANSACTIONS;
-  payload: Transaction[];
+  payload: ShortTransaction[];
 }
 
 export const GET_TRANSACTIONS_REQUEST =
@@ -14,7 +14,7 @@ export const GET_TRANSACTIONS_SUCCESS =
   "auth/getTransactions/GET_TRANSACTIONS_SUCCESS";
 export type GetTransactionsSuccessAction = BaseSuccessAction<
   typeof GET_TRANSACTIONS_SUCCESS,
-  Transaction[]
+  ShortTransaction[]
 >;
 
 export const GET_TRANSACTIONS_FAILURE =
