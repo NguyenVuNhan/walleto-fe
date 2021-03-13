@@ -1,16 +1,24 @@
-import { connect } from "react-redux";
-import { RootState } from "src/reducer/rootReducer";
+import { connect, MapStateToProps } from "react-redux";
 import Loading from "./Loading.component";
 
-interface Props {
+interface OwnProps {
   auto?: boolean;
 }
 
-const mapStateToProps = ({ loading }: RootState, props: Props) => {
+interface StateProps {
+  isLoading: boolean;
+}
+
+const mapStateToProps: MapStateToProps<StateProps, OwnProps> = (
+  { loading },
+  props
+) => {
   const isLoading =
     Object.keys(loading).length > 0 &&
     Object.values(loading).every((k) => k === true);
   return { ...props, isLoading };
 };
+
+export type Props = StateProps & OwnProps;
 
 export default connect(mapStateToProps)(Loading);

@@ -3,12 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import Alert from "src/components/atoms/Alert";
 import TextField from "src/components/atoms/TextField";
-import { loginTypes } from ".";
-
-interface Props {
-  error?: loginTypes.LoginFailureAction["error"];
-  onLogin(data: LoginForm): void;
-}
+import { Props } from "./Login.container";
 
 const Login: FC<Props> = ({ error, onLogin }) => {
   const { handleSubmit, register, errors } = useForm<LoginForm>();
@@ -43,7 +38,7 @@ const Login: FC<Props> = ({ error, onLogin }) => {
       </Link>
       <Link
         to="/register"
-        className="w-full bg-green-400 mt-8 mb-4 text-white p-3 rounded-lg font-semibold text-lg text-center text-center"
+        className="w-full p-3 mt-8 mb-4 text-lg font-semibold text-center text-white bg-green-400 rounded-lg"
       >
         Create New Account
       </Link>

@@ -3,12 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import Alert from "src/components/atoms/Alert";
 import TextField from "src/components/atoms/TextField";
-import { registerTypes } from ".";
-
-interface Props {
-  error?: registerTypes.RegisterFailureAction["error"];
-  onRegister(data: RegisterForm): void;
-}
+import { Props } from "./Register.container";
 
 const Register: FC<Props> = ({ error, onRegister }) => {
   const { handleSubmit, register, errors, watch } = useForm<RegisterForm>();
@@ -50,15 +45,15 @@ const Register: FC<Props> = ({ error, onRegister }) => {
           errors.cpassword ? errors.cpassword.message : error?.errors?.cpassword
         }
       />
-      <button className="w-full bg-blue-500 text-white p-3 rounded-lg font-semibold text-lg">
+      <button className="w-full p-3 text-lg font-semibold text-white bg-blue-500 rounded-lg">
         Register
       </button>
-      <Link to="/forgot_password" className="text-blue-400 text-center my-2">
+      <Link to="/forgot_password" className="my-2 text-center text-blue-400">
         Forgot Password?
       </Link>
       <Link
         to="/login"
-        className="w-full bg-green-400 mt-8 mb-4 text-white p-3 rounded-lg font-semibold text-lg text-center"
+        className="w-full p-3 mt-8 mb-4 text-lg font-semibold text-center text-white bg-green-400 rounded-lg"
       >
         Login To Your Account
       </Link>

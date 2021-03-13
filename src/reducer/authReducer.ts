@@ -1,11 +1,11 @@
 import { loginTypes } from "src/pages/Login";
 
+type AuthActionType = loginTypes.LoginActionType;
+
 export interface AuthState {
   user?: User;
   authenticated: boolean;
 }
-
-type AuthActionType = loginTypes.LoginActionType;
 
 const initialState: AuthState = {
   authenticated: false,

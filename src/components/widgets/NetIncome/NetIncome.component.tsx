@@ -12,11 +12,7 @@ import {
   YAxis,
 } from "recharts";
 import { Payload } from "recharts/types/component/DefaultLegendContent";
-
-export interface Props {
-  className?: string;
-  data: NetIncomeData[];
-}
+import { Props } from "./NetIncome.container";
 
 const NetIncomeWidget: FC<Props> = ({ className, data }) => {
   return (

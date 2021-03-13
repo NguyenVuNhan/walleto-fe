@@ -1,18 +1,29 @@
-import { connect } from "react-redux";
-import { Dispatch } from "redux";
-import { RootState } from "src/reducer/rootReducer";
+import { connect, MapDispatchToProps, MapStateToProps } from "react-redux";
 import { register } from "./Register.actions";
 import RegisterComponent from "./Register.component";
-import { REGISTER, RegisterActionType } from "./Register.types";
+import { REGISTER, RegisterFailureAction } from "./Register.types";
 
-const mapStateToProps = ({ error }: RootState) => {
+interface OwnProps {}
+
+interface StateProps {
+  error?: RegisterFailureAction["error"];
+}
+
+interface DispatchProps {
+  onRegister(data: RegisterForm): void;
+}
+
+const mapStateToProps: MapStateToProps<StateProps, OwnProps> = ({ error }) => {
   return { error: error[REGISTER] };
 };
 
-const mapDispatchToProps = (dispatch: Dispatch<RegisterActionType>) => ({
+const mapDispatchToProps: MapDispatchToProps<DispatchProps, OwnProps> = (
+  dispatch
+) => ({
   onRegister: (data: RegisterForm) => {
     dispatch(register(data));
   },
 });
 
+export type Props = OwnProps & StateProps & DispatchProps;
 export default connect(mapStateToProps, mapDispatchToProps)(RegisterComponent);

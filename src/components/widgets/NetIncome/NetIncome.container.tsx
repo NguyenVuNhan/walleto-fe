@@ -1,6 +1,5 @@
-import { connect } from "react-redux";
-import { RootState } from "src/reducer/rootReducer";
-import NetIncomeWidget, { Props } from "./NetIncome.component";
+import { connect, MapStateToProps } from "react-redux";
+import NetIncomeWidget from "./NetIncome.component";
 
 const data: NetIncomeData[] = [
   { name: "Page A", income: 4000, expense: -2400 },
@@ -12,10 +11,17 @@ const data: NetIncomeData[] = [
   { name: "Page G", income: 3490, expense: -4300 },
 ];
 
-type InnerProps = Omit<Props, "data">;
+interface OwnProps {
+  className?: string;
+}
 
-const mapStateToProps = ({}: RootState, props: InnerProps) => {
+interface StateProps {
+  data: NetIncomeData[];
+}
+
+const mapStateToProps: MapStateToProps<StateProps, OwnProps> = (_, props) => {
   return { ...props, data };
 };
 
+export type Props = OwnProps & StateProps;
 export default connect(mapStateToProps)(NetIncomeWidget);

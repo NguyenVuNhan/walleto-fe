@@ -1,15 +1,8 @@
 import { combineReducers } from "redux";
-import { transactionsReducer, TransactionsState } from "src/pages/Transactions";
-import authReducer, { AuthState } from "./authReducer";
-import errorReducer, { ErrorState } from "./errorReducer";
-import loadingReducer, { LoadingState } from "./loadingReducer";
-
-export interface RootState {
-  auth: AuthState;
-  loading: LoadingState;
-  error: ErrorState;
-  transactions: TransactionsState;
-}
+import { transactionsReducer } from "src/pages/Transactions";
+import authReducer from "./authReducer";
+import errorReducer from "./errorReducer";
+import loadingReducer from "./loadingReducer";
 
 export default combineReducers({
   auth: authReducer,

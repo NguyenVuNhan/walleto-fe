@@ -39,7 +39,7 @@ const Transactions: FC<Props> = ({ transactionData }) => {
           const y = date.getUTCFullYear();
           return (
             <Fragment key={index}>
-              <div className="w-full py-3 bg-gray-50"></div>
+              <div className="w-full py-3 bg-gray-100"></div>
               <div className="p-2">
                 <p className="float-left mr-5 text-5xl">
                   {d / 10 < 1 ? "0" + d : "" + d}
@@ -53,7 +53,7 @@ const Transactions: FC<Props> = ({ transactionData }) => {
               <div className="w-full border"></div>
               {data.transactions.map((transaction) => (
                 <div key={transaction.id} className="p-2 my-2 ">
-                  <LocalMallIcon className="float-left w-12 h-12 p-2 mr-4 bg-gray-100 rounded-full text-yellow-400" />
+                  <LocalMallIcon className="float-left w-12 h-12 p-2 mr-4 text-yellow-400 bg-gray-100 rounded-full" />
                   <div
                     className={[
                       "float-right",

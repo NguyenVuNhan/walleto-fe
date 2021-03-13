@@ -1,6 +1,5 @@
-import { connect } from "react-redux";
-import { RootState } from "src/reducer/rootReducer";
-import WalletWidget, { Props } from "./Wallet.component";
+import { connect, MapStateToProps } from "react-redux";
+import WalletWidget from "./Wallet.component";
 
 const detailsData: TransactionOverView[] = [
   {
@@ -36,10 +35,18 @@ const generalData: TransactionOverView[] = [
   },
 ];
 
-type InnerProps = Omit<Props, "detailsData" | "generalData">;
+interface OwnProps {
+  className?: string;
+}
 
-const mapStateToProps = ({}: RootState, props: InnerProps) => {
+interface StateProps {
+  generalData: TransactionOverView[];
+  detailsData: TransactionOverView[];
+}
+
+const mapStateToProps: MapStateToProps<StateProps, OwnProps> = (_, props) => {
   return { ...props, generalData, detailsData };
 };
 
+export type Props = OwnProps & StateProps;
 export default connect(mapStateToProps)(WalletWidget);

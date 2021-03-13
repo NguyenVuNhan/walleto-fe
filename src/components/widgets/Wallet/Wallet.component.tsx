@@ -4,12 +4,7 @@ import Button from "src/components/atoms/Button";
 import DetailsPieActive from "./components/DetailsPieActive";
 import GeneralPie from "./components/GeneralPie";
 import TotalLabel from "./components/TotalLabel";
-
-export interface Props {
-  className?: string;
-  generalData: TransactionOverView[];
-  detailsData: TransactionOverView[];
-}
+import { Props } from "./Wallet.container";
 
 const WalletWidget: FC<Props> = ({ className, generalData, detailsData }) => {
   const [activeIndex, setActiveIndex] = useState<number>();

@@ -6,16 +6,13 @@ import {
   Redirect,
   Route,
 } from "react-router-dom";
-import { RootState } from "src/reducer/rootReducer";
 
 interface Props extends RouteProps {
   component: ComponentType<RouteComponentProps>;
 }
 
 const AuthGuard: FC<Props> = ({ component: Component, ...rest }) => {
-  const isAuthenticated = useSelector<RootState, boolean>(
-    (state) => state.auth.authenticated
-  );
+  const isAuthenticated = useSelector((state) => state.auth.authenticated);
 
   return (
     <Route

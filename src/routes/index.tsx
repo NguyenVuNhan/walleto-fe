@@ -3,15 +3,12 @@ import { useSelector } from "react-redux";
 import { Redirect, Router } from "react-router-dom";
 import Loading from "src/pages/Loading";
 import { history } from "src/provider";
-import { RootState } from "src/reducer/rootReducer";
 
 const AuthRoute = lazy(() => import("./authRouter"));
 const MainRouter = lazy(() => import("./mainRouter"));
 
 const Routes: FC = () => {
-  const isAuthenticated = useSelector<RootState, boolean>(
-    (state) => state.auth.authenticated
-  );
+  const isAuthenticated = useSelector((state) => state.auth.authenticated);
 
   return (
     <Router history={history}>
