@@ -1,13 +1,12 @@
 import React, { FC, Fragment } from "react";
 import LocalMallIcon from "src/assets/Icons/LocalMall";
 import { getMonth, getWeekday } from "src/helpers/date";
-import { TransactionsState } from "./Transactions.reducer";
+import { useInitFunction } from "src/hooks";
+import { Props } from "./Transactions.container";
 
-interface Props {
-  transactionData: TransactionsState;
-}
+const Transactions: FC<Props> = ({ transactionData, onGetTransactions }) => {
+  useInitFunction(onGetTransactions);
 
-const Transactions: FC<Props> = ({ transactionData }) => {
   return (
     <div className="flex justify-center gap-5">
       <div className="w-full md:w-1/2 widget-base">

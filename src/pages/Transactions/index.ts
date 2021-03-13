@@ -1,4 +1,4 @@
-import Transactions from "./Transaction.container";
+import Transactions from "./Transactions.container";
 import * as reducer from "./Transactions.reducer";
 
 export type TransactionsState = reducer.TransactionsState;

@@ -1,7 +1,7 @@
 export const GET_TRANSACTIONS = "auth/getTransactions/GET_TRANSACTIONS";
 export interface GetTransactionsAction {
   type: typeof GET_TRANSACTIONS;
-  payload: ShortTransaction[];
+  payload: { from?: string; to?: string };
 }
 
 export const GET_TRANSACTIONS_REQUEST =

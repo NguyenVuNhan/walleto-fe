@@ -1,6 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, Transition, Variants } from "framer-motion";
 import React, { lazy, Suspense } from "react";
-import { Route } from "react-router";
 import { AnimatedRoutes } from "src/components/molecules/animatedRoutes";
 import SuspenseFallback from "src/components/molecules/SuspenseFallback";
 import MainTemplate from "src/components/templates/main.template";
@@ -17,6 +16,16 @@ const mainRoutes = [
   },
 ];
 
+const animateVariants: Variants = {
+  enter: { opacity: 1, y: 0 },
+  leave: { opacity: 0, y: "-100%" },
+};
+const animateTransition: Transition = {
+  type: "tween",
+  ease: "anticipate",
+  duration: 0.5,
+};
+
 const MainRouter = () => {
   return (
     <AnimatedRoutes>
@@ -29,14 +38,11 @@ const MainRouter = () => {
             <MainTemplate>
               <motion.div
                 className="w-full h-full"
-                initial={{ opacity: 0, x: "100%" }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: "100%" }}
-                transition={{
-                  type: "tween",
-                  ease: "anticipate",
-                  duration: 0.5,
-                }}
+                initial="leave"
+                animate="enter"
+                exit="exit"
+                variants={animateVariants}
+                transition={animateTransition}
               >
                 <Suspense fallback={<SuspenseFallback />}>
                   {<route.component />}
