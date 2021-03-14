@@ -2,10 +2,13 @@ import React, { ButtonHTMLAttributes, FC } from "react";
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {}
 
-const Button: FC<Props> = ({ className, children }) => {
+const Button: FC<Props> = ({ className, children, ...rest }) => {
   return (
     <button
-      className={[className, "p-3 rounded-lg font-semibold text-lg"].join(" ")}
+      {...rest}
+      className={[className, "px-3 py-2 rounded-lg font-semibold text-lg"].join(
+        " "
+      )}
     >
       {children}
     </button>

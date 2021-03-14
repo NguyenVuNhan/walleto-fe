@@ -4,18 +4,15 @@ export interface TransactionsState {
   [key: string]: { total: number; transactions: ShortTransaction[] };
 }
 
-type AuthActionType = types.GetTransactionsActionType;
+type TransactionsActionType = types.GetTransactionsActionType;
 
 const initialState: TransactionsState = {};
 
-const authReducer = (
+const transactionsReducer = (
   state = initialState,
-  action: AuthActionType
+  action: TransactionsActionType
 ): TransactionsState => {
   switch (action.type) {
-    case types.GET_TRANSACTIONS_REQUEST:
-    case types.GET_TRANSACTIONS_FAILURE:
-      return { ...state };
     case types.GET_TRANSACTIONS_SUCCESS:
       // Sort the transaction by date
       const payload = action.payload.sort((b, a) => {
@@ -43,4 +40,4 @@ const authReducer = (
   }
 };
 
-export default authReducer;
+export default transactionsReducer;
