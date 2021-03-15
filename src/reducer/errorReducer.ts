@@ -1,13 +1,16 @@
+import { logoutTypes } from "src/components/organisms/Header";
 import { loginTypes } from "src/pages/Login";
 import { registerTypes } from "src/pages/Register";
 
 export type ErrorAction =
   | loginTypes.LoginFailureAction
-  | registerTypes.RegisterFailureAction;
+  | registerTypes.RegisterFailureAction
+  | logoutTypes.LogoutFailureAction;
 
 export interface ErrorState {
   [loginTypes.LOGIN]?: loginTypes.LoginFailureAction["error"];
   [registerTypes.REGISTER]?: loginTypes.LoginFailureAction["error"];
+  [logoutTypes.LOGOUT]?: logoutTypes.LogoutFailureAction["error"];
 }
 
 const getErrorMatches = (actionType: string) =>

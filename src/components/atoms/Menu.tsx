@@ -41,17 +41,16 @@ const Menu: FC<Props> = ({
 
   return (
     <motion.div
-      {...rest}
       ref={ref}
       className={[
         className,
-        "absolute right-0 w-48 py-1 mt-2 bg-white shadow-lg origin-top-right rounded-md ring-1 ring-black ring-opacity-5 focus:outline-none",
+        "z-10 absolute right-0 w-48 py-1 mt-2 bg-white shadow-lg origin-top-right rounded-md ring-1 ring-black ring-opacity-5 focus:outline-none",
       ].join(" ")}
       role="menu"
       aria-orientation="vertical"
-      initial="exit"
       animate={open ? "enter" : "exit"}
       variants={animationVariants}
+      {...rest}
     >
       {children}
     </motion.div>

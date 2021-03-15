@@ -1,4 +1,4 @@
-import React, { memo, MouseEventHandler, useState } from "react";
+import React, { memo, useState } from "react";
 import MenuIcon from "src/assets/Icons/Menu";
 import logo from "src/assets/logo.svg";
 import logoFull from "src/assets/logo-full.svg";
@@ -6,16 +6,13 @@ import AccountCircleIcon from "src/assets/Icons/AccountCircle";
 import MenuItem from "src/components/atoms/MenuItem";
 import Menu from "src/components/atoms/Menu";
 import IconButton from "src/components/atoms/IconButton";
+import { Props } from "./Header.container";
 
-interface Props {
-  onMenuClick?: MouseEventHandler;
-}
-
-const Header = memo<Props>(({ onMenuClick }) => {
+const Header = memo<Props>(({ onMenuClick, onLogout }) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="flex text-white justify-between w-full p-2 bg-gray-600 shadow-md">
+    <header className="flex justify-between w-full p-2 text-white bg-gray-600 shadow-md">
       <div className="flex">
         <IconButton onClick={onMenuClick}>
           <MenuIcon />
@@ -39,9 +36,13 @@ const Header = memo<Props>(({ onMenuClick }) => {
               <span className="sr-only">Open user menu</span>
               <AccountCircleIcon />
             </IconButton>
-            <Menu open={open} onClose={() => setOpen(false)}>
+            <Menu
+              open={open}
+              onClose={() => setOpen(false)}
+              onClick={() => setOpen(!open)}
+            >
               <MenuItem>Your Profile</MenuItem>
-              <MenuItem>Logout</MenuItem>
+              <MenuItem onClick={onLogout}>Logout</MenuItem>
             </Menu>
           </div>
         </div>
