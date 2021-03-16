@@ -7,13 +7,15 @@ import MenuItem from "src/components/atoms/MenuItem";
 import Menu from "src/components/atoms/Menu";
 import IconButton from "src/components/atoms/IconButton";
 import { Props } from "./Header.container";
+import DatePicker from "../DatePicker/DatePicker.component";
 
 const Header = memo<Props>(({ onMenuClick, onLogout }) => {
   const [open, setOpen] = useState(false);
+  const [date, setDate] = useState(new Date());
 
   return (
     <header className="flex justify-between w-full p-2 text-white bg-gray-600 shadow-md">
-      <div className="flex">
+      <div className="flex items-center">
         <IconButton onClick={onMenuClick}>
           <MenuIcon />
         </IconButton>
@@ -23,6 +25,9 @@ const Header = memo<Props>(({ onMenuClick, onLogout }) => {
           src={logoFull}
           alt="walleto"
         />
+      </div>
+      <div className="">
+        <DatePicker date={date} onChange={setDate} />
       </div>
       <div className="flex">
         <div className="relative flex items-center">
@@ -36,11 +41,7 @@ const Header = memo<Props>(({ onMenuClick, onLogout }) => {
               <span className="sr-only">Open user menu</span>
               <AccountCircleIcon />
             </IconButton>
-            <Menu
-              open={open}
-              onClose={() => setOpen(false)}
-              onClick={() => setOpen(!open)}
-            >
+            <Menu open={open} onClose={() => setOpen(false)}>
               <MenuItem>Your Profile</MenuItem>
               <MenuItem onClick={onLogout}>Logout</MenuItem>
             </Menu>

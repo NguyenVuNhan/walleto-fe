@@ -11,7 +11,7 @@ import {
 import * as actions from "./Header.actions";
 import * as types from "./Header.types";
 
-function* onLogout({}: types.LogoutAction) {
+function* onLogout(_: types.LogoutAction) {
   yield put(actions.logoutRequest());
   try {
     clearAuthToken();

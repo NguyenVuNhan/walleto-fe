@@ -18,4 +18,10 @@
   .drawer .list-item {
     @apply w-full min-w-max;
   }
+
+  .calendar {
+    @apply text-gray-800 grid;
+    grid-template-rows: 2rem auto;
+    align-items: stretch;
+  }
 }
