@@ -3,7 +3,7 @@ import { MonthNames, WeekDayNames } from "src/constants/date.const";
 import { getDaysInMonth, getFirstWeekday } from "src/helpers/date";
 import CalButton from "./CalButton";
 import { DatePickerCtx } from "../DatePicker.context";
-import Animation from "../Animation";
+import Animation from "src/components/molecules/Animation";
 
 const DateSelection: FC = () => {
   const {

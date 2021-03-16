@@ -5,6 +5,7 @@ import LocalMallIcon from "src/assets/Icons/LocalMall";
 import Button from "src/components/atoms/Button";
 import IconButton from "src/components/atoms/IconButton";
 import Spinner from "src/components/atoms/Spinner";
+import Animation from "src/components/molecules/Animation";
 import { useInitFunction } from "src/hooks";
 import { Props } from "./TransactionItem.container";
 
@@ -25,13 +26,7 @@ const TransactionItem: FC<Props> = ({
     );
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ ease: "easeInOut" }}
-      className={["w-full", className].join(" ")}
-    >
+    <Animation className={["w-full", className].join(" ")}>
       <LocalMallIcon className="float-left w-12 h-12 p-2 mr-4 text-yellow-400 bg-gray-100 rounded-full" />
       <IconButton
         className="float-right text-red-400 hover transform hover:scale-110"
@@ -58,7 +53,7 @@ const TransactionItem: FC<Props> = ({
         <Button className="w-24 text-red-400 hover:bg-red-100">Delete</Button>
         <Button className="w-24 text-green-400 hover:bg-green-100">Edit</Button>
       </div>
-    </motion.div>
+    </Animation>
   );
 };
 

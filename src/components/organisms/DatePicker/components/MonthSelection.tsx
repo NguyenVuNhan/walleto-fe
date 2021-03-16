@@ -2,7 +2,7 @@ import React, { FC, useContext } from "react";
 import { MonthNames } from "src/constants/date.const";
 import CalButton from "./CalButton";
 import { DatePickerCtx } from "../DatePicker.context";
-import Animation from "../Animation";
+import Animation from "src/components/molecules/Animation";
 
 const MonthSelection: FC = () => {
   const { viewYears, selectMonth, nextYear, prevYear, visible } = useContext(
