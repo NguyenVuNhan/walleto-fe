@@ -33,7 +33,7 @@ const TransactionItem: FC<Props> = ({
     <Animation className={["w-full", className].join(" ")}>
       <LocalMallIcon className="float-left w-12 h-12 p-2 mr-4 text-yellow-400 bg-gray-100 rounded-full" />
       <IconButton
-        className="float-right text-red-400 hover transform hover:scale-110"
+        className="float-right text-red-400 hover-scale-110"
         onClick={onClose}
       >
         <CancelIcon />

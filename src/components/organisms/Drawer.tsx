@@ -1,4 +1,5 @@
 import React, { memo } from "react";
+import { Link } from "react-router-dom";
 import AccountBallanceWalletIcon from "src/assets/Icons/AccountBalanceWallet";
 import AnalyticIcon from "src/assets/Icons/Analytics";
 import CategoryIcon from "src/assets/Icons/Category";
@@ -18,31 +19,31 @@ const Drawer = memo<Props>(({ open }) => {
         open ? "w-screen sm:w-64" : "w-0 sm:w-16",
       ].join(" ")}
     >
-      <div className="list-item">
+      <Link to="/" className="list-item">
         <IconButton className="mr-3">
           <ReceiptLongIcon />
         </IconButton>
         <p className="text-lg">Transaction</p>
-      </div>
-      <div className="list-item">
+      </Link>
+      <Link to="report" className="list-item">
         <IconButton className="mr-3">
           <AnalyticIcon />
         </IconButton>
         <p className="text-lg">Expenses Report</p>
-      </div>
+      </Link>
       <div className="m-1 border border-gray-400"></div>
-      <div className="list-item">
+      <Link to="wallets" className="list-item">
         <IconButton className="mr-3">
           <AccountBallanceWalletIcon />
         </IconButton>
         <p className="text-lg">Wallets</p>
-      </div>
-      <div className="list-item">
+      </Link>
+      <Link to="categories" className="list-item">
         <IconButton className="mr-3">
           <CategoryIcon />
         </IconButton>
         <p className="text-lg">Categories</p>
-      </div>
+      </Link>
     </aside>
   );
 });

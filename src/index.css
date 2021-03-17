@@ -24,4 +24,12 @@
     grid-template-rows: 2rem auto;
     align-items: stretch;
   }
+
+  .hover-scale-105 {
+    @apply transform hover:scale-105;
+  }
+
+  .hover-scale-110 {
+    @apply transform hover:scale-110;
+  }
 }

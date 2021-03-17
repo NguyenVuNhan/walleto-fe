@@ -7,6 +7,18 @@ import AuthGuard from "src/guards/auth.guard";
 
 const mainRoutes = [
   {
+    path: "/categories",
+    component: lazy(() => import("src/pages/Categories")),
+  },
+  {
+    path: "/report",
+    component: lazy(() => import("src/pages/Report")),
+  },
+  {
+    path: "/wallets",
+    component: lazy(() => import("src/pages/Wallets")),
+  },
+  {
     path: "/transactions",
     component: lazy(() => import("src/pages/Transactions")),
   },
@@ -20,6 +32,7 @@ const animateVariants: Variants = {
   enter: { opacity: 1, y: 0 },
   leave: { opacity: 0, y: "-100%" },
 };
+
 const animateTransition: Transition = {
   type: "tween",
   ease: "anticipate",

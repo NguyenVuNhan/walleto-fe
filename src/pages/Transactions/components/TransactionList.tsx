@@ -33,7 +33,7 @@ const TransactionList = memo<Props>(({ transactionData }) => {
                     />
                   ) : (
                     <Animation
-                      className="p-2 hover:bg-gray-200"
+                      className="p-2 hover:bg-gray-200 hover-scale-105"
                       onClick={() => setActiveTransaction(transaction.id)}
                     >
                       <LocalMallIcon className="float-left w-12 h-12 p-2 mr-4 text-yellow-400 bg-gray-100 rounded-full" />
