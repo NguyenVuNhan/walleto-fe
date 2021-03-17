@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import React, { FC } from "react";
 import CancelIcon from "src/assets/Icons/Cancel";
 import LocalMallIcon from "src/assets/Icons/LocalMall";
@@ -11,6 +10,7 @@ import { Props } from "./TransactionItem.container";
 
 const TransactionItem: FC<Props> = ({
   onGetTransaction,
+  onDeleteTransaction,
   onClose,
   className,
   transaction,
@@ -24,6 +24,10 @@ const TransactionItem: FC<Props> = ({
         <Spinner />
       </div>
     );
+
+  const deleteTransaction = () => {
+    onDeleteTransaction(id);
+  };
 
   return (
     <Animation className={["w-full", className].join(" ")}>
@@ -50,7 +54,12 @@ const TransactionItem: FC<Props> = ({
       </div>
       <div className="my-2 border border-gray-200"></div>
       <div className="flex justify-end">
-        <Button className="w-24 text-red-400 hover:bg-red-100">Delete</Button>
+        <Button
+          className="w-24 text-red-400 hover:bg-red-100"
+          onClick={deleteTransaction}
+        >
+          Delete
+        </Button>
         <Button className="w-24 text-green-400 hover:bg-green-100">Edit</Button>
       </div>
     </Animation>

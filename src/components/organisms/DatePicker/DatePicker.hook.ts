@@ -15,7 +15,7 @@ const useDatePickerCtx = <T extends HTMLElement>(
     year: date?.getFullYear() ?? new Date().getFullYear(),
   });
   const [view, setView] = useState<ViewState>("date");
-  const [isVisible, setVisible] = useState<boolean>(true);
+  const [isVisible, setVisible] = useState<boolean>(false);
 
   const selectDate = (d: number) => {
     const selectDate = new Date(monthYear.year, monthYear.month, d);

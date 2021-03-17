@@ -1,6 +1,6 @@
 import { MouseEventHandler } from "react";
 import { connect, MapDispatchToProps, MapStateToProps } from "react-redux";
-import { getTransaction } from "./TransactionItem.actions";
+import { deleteTransaction, getTransaction } from "./TransactionItem.actions";
 import TransactionItemComponent from "./TransactionItem.component";
 
 interface OwnProps {
@@ -15,6 +15,7 @@ interface StateProps {
 
 interface DispatchProps {
   onGetTransaction(id: number, currentTransactionId?: number): void;
+  onDeleteTransaction(id: number): void;
 }
 
 const mapStateToProps: MapStateToProps<StateProps, OwnProps> = (
@@ -30,6 +31,9 @@ const mapDispatchToProps: MapDispatchToProps<DispatchProps, OwnProps> = (
   onGetTransaction: (id, currentTransactionId) => {
     if (id === currentTransactionId) return;
     dispatch(getTransaction(id));
+  },
+  onDeleteTransaction: (id) => {
+    dispatch(deleteTransaction(id));
   },
 });
 

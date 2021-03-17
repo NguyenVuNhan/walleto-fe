@@ -19,3 +19,13 @@ export const getTransaction = async (
   const res = await axios.get<GetTransactionRes>(`/api/transaction/${id}`);
   return res.data;
 };
+
+export type DeleteTransactionRes = BaseBody<Transaction>;
+export const deleteTransaction = async (
+  id: number
+): Promise<DeleteTransactionRes> => {
+  const res = await axios.delete<DeleteTransactionRes>(
+    `/api/transaction/${id}`
+  );
+  return res.data;
+};
