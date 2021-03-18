@@ -11,3 +11,9 @@ interface RegisterForm {
 }
 
 interface TransactionsForm {}
+
+interface CategoryForm {
+  name: string;
+  type: "Expense" | "Income";
+  parent?: number;
+}

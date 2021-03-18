@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import { categoriesReducer } from "src/pages/Categories";
 import {
   transactionReducer,
   transactionsReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   error: errorReducer,
   transactions: transactionsReducer,
   transaction: transactionReducer,
+  categories: categoriesReducer,
 });
 
 export default rootReducer;

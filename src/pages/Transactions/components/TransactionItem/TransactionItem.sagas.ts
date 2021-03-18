@@ -21,7 +21,6 @@ function* onGetTransaction({ payload }: types.GetTransactionAction) {
 
     yield put(actions.getTransactionSuccess(res.data));
   } catch (err) {
-    console.log(err);
     yield put(actions.getTransactionFailure(err.response.data.data));
   }
 }
@@ -40,7 +39,6 @@ function* onDeleteTransaction({ payload }: types.DeleteTransactionAction) {
     yield put(actions.deleteTransactionSuccess(res.data));
     yield put(getTransactions());
   } catch (err) {
-    console.log(err);
     yield put(actions.deleteTransactionFailure(err.response.data.data));
   }
 }

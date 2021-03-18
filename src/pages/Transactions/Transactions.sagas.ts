@@ -21,7 +21,6 @@ function* onGetTransactions({ payload }: types.GetTransactionsAction) {
 
     yield put(actions.getTransactionsSuccess(res.data.transactions));
   } catch (err) {
-    console.log(err);
     yield put(actions.getTransactionsFailure(err.response.data.data));
   }
 }

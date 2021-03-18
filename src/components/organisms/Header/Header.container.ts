@@ -24,7 +24,6 @@ const mapDispatchToProps: MapDispatchToProps<DispatchProps, OwnProps> = (
   dispatch
 ) => ({
   onLogout: () => {
-    console.log("Logout");
     dispatch(logout());
   },
 });

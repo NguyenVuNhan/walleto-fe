@@ -4,13 +4,11 @@ export interface TransactionsState {
   [key: string]: { total: number; transactions: ShortTransaction[] };
 }
 
-type TransactionsActionType = types.GetTransactionsActionType;
-
 const initialState: TransactionsState = {};
 
 const transactionsReducer = (
   state = initialState,
-  action: TransactionsActionType
+  action: types.GetTransactionsActionType
 ): TransactionsState => {
   switch (action.type) {
     case types.GET_TRANSACTIONS_SUCCESS:

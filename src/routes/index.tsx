@@ -18,7 +18,7 @@ const Routes: FC = () => {
       <Suspense fallback={<Loading />}>
         <MainRouter />
       </Suspense>
-      <Redirect to={isAuthenticated ? "/" : "/login"} />
+      {!isAuthenticated && <Redirect to="/login" />}
     </Router>
   );
 };
