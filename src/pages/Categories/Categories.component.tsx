@@ -5,9 +5,11 @@ import Button from "src/components/atoms/Button";
 import IconButton from "src/components/atoms/IconButton";
 import { useInitFunction } from "src/hooks";
 import { Props } from "./Categories.container";
+import CategoryForm from "./components/CategoryForm";
 
 const Categories: FC<Props> = ({ onGetCategories, income, expense }) => {
   const [activeCategory, setActiveCategory] = useState(-1);
+  const [modelOpen, setModelOpen] = useState(true);
   useInitFunction(onGetCategories);
 
   const expandCategory = (id: number) => {
@@ -68,6 +70,7 @@ const Categories: FC<Props> = ({ onGetCategories, income, expense }) => {
 
   return (
     <div className="flex justify-center">
+      {modelOpen && <CategoryForm open={modelOpen} />}
       <div className="w-full md:w-1/2 widget-base">
         <p className="w-full p-2 font-serif text-5xl font-medium text-center">
           Categories
