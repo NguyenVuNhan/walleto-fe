@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import CancelIcon from "src/assets/Icons/Cancel";
 import LocalMallIcon from "src/assets/Icons/LocalMall";
-import Button from "src/components/atoms/Button";
 import IconButton from "src/components/atoms/IconButton";
 import Spinner from "src/components/atoms/Spinner";
 import Animation from "src/components/molecules/Animation";
@@ -54,13 +53,13 @@ const TransactionItem: FC<Props> = ({
       </div>
       <div className="my-2 border border-gray-200"></div>
       <div className="flex justify-end">
-        <Button
+        <button
           className="w-24 text-red-400 hover:bg-red-100"
           onClick={deleteTransaction}
         >
           Delete
-        </Button>
-        <Button className="w-24 text-green-400 hover:bg-green-100">Edit</Button>
+        </button>
+        <button className="w-24 text-green-400 hover:bg-green-100">Edit</button>
       </div>
     </Animation>
   );

@@ -8,7 +8,7 @@ const IconButton: FC<Props> = ({ className, children, ...rest }) => {
       {...rest}
       className={[
         className,
-        "flex items-center justify-center p-2 rounded-full focus:outline-none",
+        "flex items-center justify-center p-1 rounded-full focus:outline-none",
       ].join(" ")}
     >
       {children}

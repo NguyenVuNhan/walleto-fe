@@ -11,7 +11,6 @@ interface Props {
 }
 
 const Drawer = memo<Props>(({ open }) => {
-  // TODO: Add active state for each item
   return (
     <aside
       className={[

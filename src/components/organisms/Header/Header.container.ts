@@ -2,10 +2,11 @@ import { connect, MapDispatchToProps, MapStateToProps } from "react-redux";
 import { LOGOUT, LogoutFailureAction } from "./Header.types";
 import { logout } from "./Header.actions";
 import LogoutComponent from "./Header.component";
-import { MouseEventHandler } from "react";
+import { MouseEventHandler, ReactNode } from "react";
 
 interface OwnProps {
   onMenuClick?: MouseEventHandler;
+  children?: ReactNode;
 }
 
 interface StateProps {

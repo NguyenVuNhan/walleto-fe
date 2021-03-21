@@ -1,6 +1,5 @@
 import React, { FC, useState } from "react";
 import { Cell, Label, Pie, PieChart, ResponsiveContainer } from "recharts";
-import Button from "src/components/atoms/Button";
 import DetailsPieActive from "./components/DetailsPieActive";
 import GeneralPie from "./components/GeneralPie";
 import TotalLabel from "./components/TotalLabel";
@@ -65,7 +64,7 @@ const WalletWidget: FC<Props> = ({ className, generalData, detailsData }) => {
         </PieChart>
       </ResponsiveContainer>
       <div className="flex justify-center w-full m-1">
-        <Button className="text-white bg-blue-500"> Add transaction </Button>
+        <button className="text-white bg-blue-500"> Add transaction </button>
       </div>
     </div>
   );

@@ -4,27 +4,33 @@ import { AnimatedRoutes } from "src/components/molecules/animatedRoutes";
 import SuspenseFallback from "src/components/molecules/SuspenseFallback";
 import MainTemplate from "src/components/templates/main.template";
 import AuthGuard from "src/guards/auth.guard";
+import { CategoryAction } from "src/pages/Categories";
 
 const mainRoutes = [
   {
     path: "/categories",
     component: lazy(() => import("src/pages/Categories")),
+    action: <CategoryAction />,
   },
   {
     path: "/report",
     component: lazy(() => import("src/pages/Report")),
+    action: null,
   },
   {
     path: "/wallets",
     component: lazy(() => import("src/pages/Wallets")),
+    action: null,
   },
   {
     path: "/transactions",
     component: lazy(() => import("src/pages/Transactions")),
+    action: null,
   },
   {
     path: "/",
     component: lazy(() => import("src/pages/Transactions")),
+    action: null,
   },
 ];
 
@@ -48,7 +54,7 @@ const MainRouter = () => {
           exact
           path={route.path}
           component={() => (
-            <MainTemplate>
+            <MainTemplate action={route.action}>
               <motion.div
                 className="w-full h-full"
                 initial="leave"

@@ -9,7 +9,7 @@ import IconButton from "src/components/atoms/IconButton";
 import { Props } from "./Header.container";
 import DatePicker from "../DatePicker/DatePicker.component";
 
-const Header = memo<Props>(({ onMenuClick, onLogout }) => {
+const Header = memo<Props>(({ onMenuClick, onLogout, children }) => {
   const [open, setOpen] = useState(false);
   const [date, setDate] = useState(new Date());
 
@@ -30,6 +30,7 @@ const Header = memo<Props>(({ onMenuClick, onLogout }) => {
         <DatePicker date={date} onChange={setDate} />
       </div>
       <div className="flex">
+        {children}
         <div className="relative flex items-center">
           <div>
             <IconButton

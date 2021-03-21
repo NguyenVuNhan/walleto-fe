@@ -1,6 +1,5 @@
 import { AnimatePresence } from "framer-motion";
 import React, { forwardRef, HTMLAttributes, useContext } from "react";
-import Button from "src/components/atoms/Button";
 import { DatePickerCtx } from "../DatePicker.context";
 import DateSelection from "./DateSelection";
 import MonthSelection from "./MonthSelection";
@@ -38,9 +37,9 @@ const Calendar = forwardRef<HTMLDivElement, Props>(
       >
         <div className="bg-white shadow-lg max-w-xs w-64 p-2 rounded-lg ">
           <AnimatePresence>{selectionComponent}</AnimatePresence>
-          <Button className="float-right text-red-400" onClick={closeCalendar}>
+          <button className="float-right text-red-400" onClick={closeCalendar}>
             Cancel
-          </Button>
+          </button>
         </div>
       </div>
     );
