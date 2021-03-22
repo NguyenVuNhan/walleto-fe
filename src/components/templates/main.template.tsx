@@ -14,7 +14,7 @@ const MainTemplate: FC<Props> = ({ children, action }) => {
       <Header onMenuClick={() => setOpen(!open)}>{action}</Header>
       <div className="flex flex-grow">
         <Drawer open={open} />
-        <div className="h-full w-full px-1 pt-6 overflow-y-auto bg-gray-200 sm:px-5">
+        <div className="h-full w-full px-1 pt-6 overflow-y-auto bg-background sm:px-5">
           {children}
         </div>
       </div>

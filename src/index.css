@@ -4,11 +4,15 @@
 
 @layer components {
   .widget-base {
-    @apply rounded-xl bg-white shadow-lg;
+    @apply bg-surface shadow-e4 rounded-xl text-onSurface;
+  }
+
+  .divider {
+    @apply w-full border-0 border-t border-onSurface border-opacity-10;
   }
 
   .list-item {
-    @apply flex items-center py-2 pl-2 hover:bg-gray-500;
+    @apply flex items-center py-2 pl-2 hover:bg-onSurface hover:bg-opacity-10;
   }
 
   .drawer {
@@ -33,7 +37,20 @@
     @apply transform hover:scale-110;
   }
 
+  /* Button */
   .btn {
-    @apply inline-flex justify-center w-full px-4 py-2 font-medium rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2;
+    @apply inline-flex justify-center px-4 py-2 font-medium rounded-md shadow-sm focus:outline-none;
+  }
+
+  .btn-error {
+    @apply text-error hover:bg-error hover:bg-opacity-20;
+  }
+
+  .btn-secondary {
+    @apply text-secondary hover:bg-secondary hover:bg-opacity-20;
+  }
+
+  .btn-contained-primary {
+    @apply text-onPrimary bg-primary hover:bg-opacity-80;
   }
 }

@@ -14,14 +14,14 @@ const Drawer = memo<Props>(({ open }) => {
   return (
     <aside
       className={[
-        "bg-gray-600 text-white drawer transform ease-in-out transition-all duration-300 gap-1",
-        open ? "w-screen sm:w-64" : "w-0 sm:w-12",
+        "bg-surface text-onSurface drawer transform ease-in-out transition-all duration-300 gap-1 shadow-e4",
+        open ? "w-screen sm:w-64" : "w-0 sm:w-14",
       ].join(" ")}
     >
       <NavLink
         to="/"
         className="list-item"
-        activeClassName="bg-gray-500"
+        activeClassName="bg-onSurface bg-opacity-10"
         isActive={(_, location) => {
           const path = location.pathname;
           if (path === "/" || path === "/transactions") return true;
@@ -33,14 +33,22 @@ const Drawer = memo<Props>(({ open }) => {
         </IconButton>
         <p className="text-lg">Transaction</p>
       </NavLink>
-      <NavLink to="report" className="list-item" activeClassName="bg-gray-500">
+      <NavLink
+        to="report"
+        className="list-item"
+        activeClassName="bg-onSurface bg-opacity-10"
+      >
         <IconButton className="mr-3">
           <AnalyticIcon />
         </IconButton>
         <p className="text-lg">Expenses Report</p>
       </NavLink>
       <div className="m-1 border border-gray-400"></div>
-      <NavLink to="wallets" className="list-item" activeClassName="bg-gray-500">
+      <NavLink
+        to="wallets"
+        className="list-item"
+        activeClassName="bg-onSurface bg-opacity-10"
+      >
         <IconButton className="mr-3">
           <AccountBallanceWalletIcon />
         </IconButton>
@@ -49,7 +57,7 @@ const Drawer = memo<Props>(({ open }) => {
       <NavLink
         to="categories"
         className="list-item"
-        activeClassName="bg-gray-500"
+        activeClassName="bg-onSurface bg-opacity-10"
       >
         <IconButton className="mr-3">
           <CategoryIcon />

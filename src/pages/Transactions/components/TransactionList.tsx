@@ -19,21 +19,24 @@ const TransactionList = memo<Props>(({ transactionData }) => {
       {Object.entries(transactionData).map(([key, data], index) => {
         return (
           <Fragment key={index}>
-            <div className="w-full py-3 bg-gray-100"></div>
+            <div className="w-full py-3 bg-background"></div>
             <DateHeader date={key} total={data.total} />
 
             {data.transactions.map((transaction) => (
-              <div className="my-2" key={transaction.id}>
+              <div
+                className="my-2 hover:bg-onSurface hover:bg-opacity-5"
+                key={transaction.id}
+              >
                 <AnimatePresence>
                   {activeTransaction === transaction.id ? (
                     <TransactionItem
-                      className="p-2 bg-gray-100"
+                      className="p-2"
                       id={transaction.id}
                       onClose={() => setActiveTransaction(-1)}
                     />
                   ) : (
                     <Animation
-                      className="p-2 hover:bg-gray-100"
+                      className="p-2"
                       onClick={() => setActiveTransaction(transaction.id)}
                     >
                       <LocalMallIcon className="float-left w-12 h-12 p-2 mr-4 text-yellow-400 bg-gray-100 rounded-full" />

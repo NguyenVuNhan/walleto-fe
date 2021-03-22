@@ -29,7 +29,7 @@ const TransactionItem: FC<Props> = ({
   };
 
   return (
-    <Animation className={["w-full", className].join(" ")}>
+    <Animation className={["w-full bg-surface", className].join(" ")}>
       <LocalMallIcon className="float-left w-12 h-12 p-2 mr-4 text-yellow-400 bg-gray-100 rounded-full" />
       <IconButton
         className="float-right text-red-400 hover-scale-110"
@@ -40,7 +40,7 @@ const TransactionItem: FC<Props> = ({
       <p className="font-semibold">{transaction.category.name}</p>
       <p>{transaction.wallet.name} Wallet</p>
       <div className="mx-16">
-        <div className="w-48 my-2 border border-gray-200 clear-both"></div>
+        <div className="w-48 divider clear-both"></div>
         <p className="text-justify">{transaction.note}</p>
         <div
           className={[
@@ -51,15 +51,12 @@ const TransactionItem: FC<Props> = ({
           {transaction.amount}
         </div>
       </div>
-      <div className="my-2 border border-gray-200"></div>
-      <div className="flex justify-end">
-        <button
-          className="w-24 text-red-400 hover:bg-red-100"
-          onClick={deleteTransaction}
-        >
+      <div className="divider"></div>
+      <div className="flex justify-end mt-2 gap-2">
+        <button className="w-24 btn btn-error" onClick={deleteTransaction}>
           Delete
         </button>
-        <button className="w-24 text-green-400 hover:bg-green-100">Edit</button>
+        <button className="w-24 btn btn-secondary">Edit</button>
       </div>
     </Animation>
   );

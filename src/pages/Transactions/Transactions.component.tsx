@@ -13,7 +13,7 @@ const Transactions: FC<Props> = ({ transactionData, onGetTransactions }) => {
           Transaction
         </p>
         {/* General info*/}
-        <div className="m-1 border border-gray-400"></div>
+        <div className="divider"></div>
         <div className="px-4">
           <div className="flex justify-between w-100">
             <label>Inflow:</label>
@@ -23,15 +23,8 @@ const Transactions: FC<Props> = ({ transactionData, onGetTransactions }) => {
             <label>Outflow:</label>
             <p className="text-red-600">-100</p>
           </div>
-          <div className="float-right pl-3 mb-2 border-t-2 ">100</div>
+          <div className="float-right pl-6 mb-2 divider max-w-min">100</div>
           <div className="clear-both"></div>
-        </div>
-
-        <div className="m-1 border border-gray-400"></div>
-        <div className="flex justify-center px-4 py-2">
-          <button className="btn bg-blue-500 text-white hover:bg-blue-600 hover-scale-105">
-            New Transaction
-          </button>
         </div>
 
         <TransactionList transactionData={transactionData} />

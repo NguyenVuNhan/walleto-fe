@@ -26,10 +26,10 @@ const Categories: FC<Props> = ({ onGetCategories, income, expense }) => {
           <CancelIcon />
         </IconButton>
       </div>
-      <div className="flex justify-end w-full">
-        <button className="w-24 text-red-400 hover:bg-red-100">Delete</button>
+      <div className="flex justify-end w-full gap-2">
+        <button className="btn w-24 btn-error">Delete</button>
         <button
-          className="w-24 text-green-400 hover:bg-green-100"
+          className="w-24 btn btn-secondary"
           onClick={() => setModalOpen(true)}
         >
           Edit
@@ -45,8 +45,8 @@ const Categories: FC<Props> = ({ onGetCategories, income, expense }) => {
     <div
       key={id}
       className={[
-        "flex items-center hover:bg-gray-200 flex-wrap",
-        isParent ? "pb-2" : "pb-1 pl-3",
+        "py-1 flex items-center hover:bg-onSurface hover:bg-opacity-10 flex-wrap",
+        isParent ? "mb-2 pl-3" : "mb-1 pl-6",
       ].join(" ")}
       onClick={() => expandCategory(id)}
     >
@@ -64,7 +64,7 @@ const Categories: FC<Props> = ({ onGetCategories, income, expense }) => {
   const categoryList = (categories: ShortCategory[]) => (
     <>
       {categories.map((category) => (
-        <div key={category.id} className="pt-1 border-b">
+        <div key={category.id} className="py-2">
           {categoryItem(category)}
           {category.children.map((c) => categoryItem(c, false))}
         </div>
@@ -73,17 +73,17 @@ const Categories: FC<Props> = ({ onGetCategories, income, expense }) => {
   );
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center text-onSurface">
       <CategoryModal open={modalOpen} onClose={() => setModalOpen(false)} />
       <div className="w-full md:w-1/2 widget-base">
-        <p className="font-serif text-5xl font-medium text-center w-full p-2">
+        <p className="w-full p-2 font-serif text-5xl font-medium text-center">
           Categories
         </p>
 
-        <div className="w-full p-2 font-medium bg-gray-100">Expense</div>
-        <div className="pl-3">{categoryList(expense)}</div>
-        <div className="w-full p-2 font-medium bg-gray-100">Income</div>
-        <div className="pl-3">{categoryList(income)}</div>
+        <div className="w-full p-2 font-medium bg-background">Expense</div>
+        <div className="">{categoryList(expense)}</div>
+        <div className="w-full p-2 font-medium bg-background">Income</div>
+        <div className="">{categoryList(income)}</div>
       </div>
     </div>
   );

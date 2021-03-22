@@ -11,9 +11,9 @@ const Animation: FC<Props> = ({ children, animation = "opacity", ...rest }) => {
   return (
     <motion.div
       {...rest}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      initial="initial"
+      animate="animate"
+      exit="exit"
       variants={animations[animation]}
     >
       {children}

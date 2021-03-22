@@ -2,12 +2,12 @@ import React, { FC, useState } from "react";
 import CategoryModal from "../CategoryModal";
 
 const CategoryAction: FC = () => {
-  const [modalOpen, setModalOpen] = useState(true);
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <>
       <button
-        className="btn bg-blue-400 text-base text-gray-900 text-base"
+        className="btn btn-contained-primary"
         onClick={() => setModalOpen(true)}
       >
         Add Category
