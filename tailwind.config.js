@@ -81,8 +81,11 @@ module.exports = {
     },
   },
   variants: {
-    width: ["hover", "responsive"],
-    extend: {},
+    width: ["responsive"],
+    extend: {
+      ringWidth: ["active"],
+      outline: ["active"],
+    },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/forms")],
 };

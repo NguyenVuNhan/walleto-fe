@@ -9,7 +9,10 @@ const Register: FC<Props> = ({ error, onRegister }) => {
   const { handleSubmit, register, errors, watch } = useForm<RegisterForm>();
 
   return (
-    <form className="w-full flex flex-col" onSubmit={handleSubmit(onRegister)}>
+    <form
+      className="w-full flex flex-col gap-2"
+      onSubmit={handleSubmit(onRegister)}
+    >
       {error && <Alert>{error.msg}</Alert>}
       <TextField
         label="User Name"

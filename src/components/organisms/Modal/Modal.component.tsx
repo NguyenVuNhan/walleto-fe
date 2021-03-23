@@ -31,7 +31,7 @@ const variants: Variants = {
   },
 };
 
-const Modal: FC<Props> = ({ open, children, onClose }) => {
+const Modal: FC<Props> = ({ className, open, children, onClose }) => {
   const { ref } = useClickOutside<HTMLDivElement>(onClose);
 
   return (
@@ -54,7 +54,10 @@ const Modal: FC<Props> = ({ open, children, onClose }) => {
               exit="leave"
               variants={variants}
               ref={ref}
-              className="inline-block overflow-hidden rounded-lg shadow-xl sm:max-w-lg sm:w-full"
+              className={[
+                "inline-block overflow-hidden rounded-lg shadow-xl sm:max-w-lg sm:w-full",
+                className,
+              ].join(" ")}
               role="dialog"
               aria-modal="true"
               aria-labelledby="modal-headline"

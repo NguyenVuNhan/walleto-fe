@@ -1,50 +1,49 @@
-import React, { ChangeEvent, forwardRef, InputHTMLAttributes } from "react";
+import React, {
+  forwardRef,
+  InputHTMLAttributes,
+  KeyboardEventHandler,
+} from "react";
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
+  className?: string;
   error?: string;
   label?: string;
 }
 
 const TextField = forwardRef<HTMLInputElement, Props>(
-  ({ label, name, onChange, error, ...rest }, ref) => {
+  ({ className, onKeyUp, label, error, type = "text", ...rest }, ref) => {
     const [active, setActive] = React.useState(false);
 
-    const handleActivation = (e: ChangeEvent<HTMLInputElement>) => {
-      setActive(!!e.target.value);
-      if (onChange) {
-        onChange(e);
-      }
+    const toggle: KeyboardEventHandler<HTMLInputElement> = (e) => {
+      setActive(!!e.currentTarget.value);
+      onKeyUp && onKeyUp(e);
     };
 
     return (
-      <div className="relative mb-2">
+      <div className={["relative", className].join(" ")}>
         <input
           {...rest}
           ref={ref}
           className={[
-            "transition-all duration-200 ease-in-out p-3 w-full",
-            "border focus:outline-none rounded-md focus:ring-1",
-            active ? "pt-7" : "",
-            error
-              ? "border-red-500 ring-red-500"
-              : "border-gray-400 ring-cyan-500",
+            "w-full form-input",
+            active ? "filled" : "",
+            error ? "error" : "",
+            label ? "" : "pt-3",
           ].join(" ")}
-          id={name}
-          name={name}
-          onChange={handleActivation}
+          id={rest.name}
+          type={type}
+          autoFocus
+          onKeyUp={toggle}
         />
-        <label
-          className={[
-            "transition-all duration-200 ease-in-out",
-            "absolute top-0 left-0 flex items-center text-opacity-50 p-3",
-            active ? "text-xs" : "",
-            error ? "text-red-500" : "text-gray-900",
-          ].join(" ")}
-          htmlFor={name}
-        >
-          {label}
-        </label>
-        {error && <p className="text-sm ml-2 text-red-500">{error}</p>}
+        {label && (
+          <label
+            htmlFor={rest.name}
+            className={["label", error ? "error" : ""].join(" ")}
+          >
+            {label}
+          </label>
+        )}
+        {error && <p className="ml-2 text-sm text-left text-error">{error}</p>}
       </div>
     );
   }

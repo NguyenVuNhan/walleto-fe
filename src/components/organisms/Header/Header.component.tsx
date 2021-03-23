@@ -26,7 +26,7 @@ const Header = memo<Props>(({ onMenuClick, onLogout, children }) => {
       {/* <div className=""> */}
       {/*   <DatePicker date={date} onChange={setDate} /> */}
       {/* </div> */}
-      <div className="flex">
+      <div className="flex items-center gap-1">
         {children}
         {theme === "light" ? (
           <IconButton onClick={() => setTheme("dark")}>

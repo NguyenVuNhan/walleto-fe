@@ -11,7 +11,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { Payload } from "recharts/types/component/DefaultLegendContent";
+/* import { Payload } from "recharts/types/component/DefaultLegendContent"; */
 import { Props } from "./NetIncome.container";
 
 const NetIncomeWidget: FC<Props> = ({ className, data }) => {
@@ -76,21 +76,21 @@ const NetIncomeWidget: FC<Props> = ({ className, data }) => {
 
               return (
                 <ul className="flex items-center justify-center p-0 m-0">
-                  {(payload as Payload[]).map((entry, index) => {
-                    return entry.type !== "rect" ? null : (
-                      <li
-                        key={`item-${index}`}
-                        className="flex items-center m-3 gap-3"
-                      >
-                        <svg width={14} height={14}>
-                          <rect width={20} height={20} fill={entry.color} />
-                        </svg>
-                        <span style={{ color: entry.color }}>
-                          {entry.value}
-                        </span>
-                      </li>
-                    );
-                  })}
+                  {/* {(payload as Payload[]).map((entry, index) => { */}
+                  {/*   return entry.type !== "rect" ? null : ( */}
+                  {/*     <li */}
+                  {/*       key={`item-${index}`} */}
+                  {/*       className="flex items-center m-3 gap-3" */}
+                  {/*     > */}
+                  {/*       <svg width={14} height={14}> */}
+                  {/*         <rect width={20} height={20} fill={entry.color} /> */}
+                  {/*       </svg> */}
+                  {/*       <span style={{ color: entry.color }}> */}
+                  {/*         {entry.value} */}
+                  {/*       </span> */}
+                  {/*     </li> */}
+                  {/*   ); */}
+                  {/* })} */}
                 </ul>
               );
             }}

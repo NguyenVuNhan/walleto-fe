@@ -1,12 +1,12 @@
 import React, { FC } from "react";
-import { PolarViewBox, ViewBox } from "recharts/types/util/types";
+// import { PolarViewBox, ViewBox } from "recharts/types/util/types";
 
 interface Props {
-  viewBox?: ViewBox;
+  viewBox?: any /*ViewBox*/;
 }
 
 const TotalLabel: FC<Props> = ({ viewBox }) => {
-  const { cx, cy } = viewBox as PolarViewBox;
+  const { cx, cy } = viewBox; /*as PolarViewBox*/
   return (
     <text
       x={cx}

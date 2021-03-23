@@ -52,7 +52,7 @@ const TransactionItem: FC<Props> = ({
         </div>
       </div>
       <div className="divider"></div>
-      <div className="flex justify-end mt-2 gap-2">
+      <div className="flex justify-end px-2 mt-2 gap-2">
         <button className="w-24 btn btn-error" onClick={deleteTransaction}>
           Delete
         </button>

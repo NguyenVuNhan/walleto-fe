@@ -9,7 +9,10 @@ const Login: FC<Props> = ({ error, onLogin }) => {
   const { handleSubmit, register, errors } = useForm<LoginForm>();
 
   return (
-    <form className="w-full flex flex-col" onSubmit={handleSubmit(onLogin)}>
+    <form
+      className="w-full flex flex-col gap-2"
+      onSubmit={handleSubmit(onLogin)}
+    >
       {error && <Alert>{error?.msg}</Alert>}
       <TextField
         label="Email or User Name"
@@ -21,6 +24,7 @@ const Login: FC<Props> = ({ error, onLogin }) => {
             : error?.errors?.name_email
         }
       />
+
       <TextField
         label="Password"
         type="password"
@@ -30,10 +34,10 @@ const Login: FC<Props> = ({ error, onLogin }) => {
           errors.password ? errors.password.message : error?.errors?.password
         }
       />
-      <button className="w-full bg-blue-500 text-white p-3 rounded-lg font-semibold text-lg">
+      <button className="w-full p-3 text-lg font-semibold text-white bg-blue-500 rounded-lg">
         Login
       </button>
-      <Link to="/forgot_password" className="text-blue-400 text-center my-2">
+      <Link to="/forgot_password" className="my-2 text-center text-blue-400">
         Forgot Password?
       </Link>
       <Link

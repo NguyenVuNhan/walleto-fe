@@ -1,32 +1,68 @@
 import React, { FC } from "react";
 import { useForm } from "react-hook-form";
+import Radio from "src/components/atoms/Radio";
+import TextField from "src/components/atoms/TextField";
 import Modal from "src/components/organisms/Modal";
 import { Props } from "./CategoryModal.container";
 
 const CategoryModal: FC<Props> = ({ open, onClose }) => {
-  const { handleSubmit } = useForm();
+  const { handleSubmit, register } = useForm();
 
   const addCategory = (data: any) => {
     console.log(data);
   };
 
   return (
-    <Modal open={open} onClose={onClose}>
+    <Modal
+      className="bg-background text-onSurface"
+      open={open}
+      onClose={onClose}
+    >
       <form onSubmit={handleSubmit(addCategory)}>
-        <div className="px-4 pt-5 pb-4 bg-white sm:p-6 sm:pb-4">
-          <p className="text-xl">Add category</p>
-          <div className="w-full border"></div>
+        <div className="px-2 pt-5">
+          <p className="font-serif text-3xl">Add category</p>
+          <div className="my-2 divider"></div>
         </div>
-        <div className="px-4 py-3 bg-gray-50 sm:px-6 sm:flex sm:flex-row-reverse">
-          <button
-            type="button"
-            className="inline-flex justify-center w-full px-4 py-2 text-base font-medium text-white bg-red-600 border border-transparent rounded-md shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
-          >
+        <div className="px-6 grid grid-cols-6 sm:grid-cols-12 gap-3">
+          <Radio
+            className="col-span-6"
+            name="type"
+            value="Expense"
+            label="Expense"
+            ref={register}
+          />
+          <Radio
+            className="col-span-6"
+            name="type"
+            value="Income"
+            label="Income"
+            ref={register}
+          />
+          <TextField
+            className="col-span-full input-outlined"
+            label="Category name"
+            ref={register}
+          />
+          <div className="col-span-full">
+            <select
+              className="w-full from-select bg-background rounded ring-primary"
+              name="cars"
+              id="cars"
+            >
+              <option value="volvo">Volvo</option>
+              <option value="saab">Saab</option>
+              <option value="mercedes">Mercedes</option>
+              <option value="audi">Audi</option>
+            </select>
+          </div>
+        </div>
+        <div className="px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse gap-2">
+          <button type="button" className="btn btn-outlined-secondary">
             Submit
           </button>
           <button
             type="button"
-            className="inline-flex justify-center w-full px-4 py-2 mt-3 text-base font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+            className="btn btn-outlined-error"
             onClick={onClose}
           >
             Cancel

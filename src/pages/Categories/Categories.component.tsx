@@ -26,8 +26,8 @@ const Categories: FC<Props> = ({ onGetCategories, income, expense }) => {
           <CancelIcon />
         </IconButton>
       </div>
-      <div className="flex justify-end w-full gap-2">
-        <button className="btn w-24 btn-error">Delete</button>
+      <div className="flex justify-end w-full gap-2 p-2">
+        <button className="w-24 btn btn-error">Delete</button>
         <button
           className="w-24 btn btn-secondary"
           onClick={() => setModalOpen(true)}
@@ -46,7 +46,7 @@ const Categories: FC<Props> = ({ onGetCategories, income, expense }) => {
       key={id}
       className={[
         "py-1 flex items-center hover:bg-onSurface hover:bg-opacity-10 flex-wrap",
-        isParent ? "mb-2 pl-3" : "mb-1 pl-6",
+        isParent ? "pl-3" : "pl-6",
       ].join(" ")}
       onClick={() => expandCategory(id)}
     >
