@@ -74,7 +74,7 @@
     @apply px-3 py-3 pt-5 pb-2 appearance-none rounded bg-background;
   }
 
-  .input:focus + .label,
+  .form-input:focus + .label,
   .form-input:active + .label,
   .form-input.filled + .label {
     @apply text-xs transition-all -top-0.5;
@@ -89,7 +89,7 @@
     transition: all 0.2s ease-out;
     top: 0.4rem;
     left: 0;
-    @apply absolute pt-4 pl-3 mb-0 -mt-2 text-base leading-tight text-gray-400 cursor-text;
+    @apply absolute pt-4 pl-3 mb-0 -mt-2 leading-tight text-gray-400 cursor-text;
   }
 
   .form-input:focus + .label.error,
@@ -109,6 +109,6 @@
 
   /* Select Input */
   .form-select option {
-    @apply bg-background;
+    @apply text-red-200 bg-background;
   }
 }

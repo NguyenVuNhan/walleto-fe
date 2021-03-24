@@ -7,7 +7,7 @@ import React, {
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   error?: string;
-  label?: string;
+  label: string;
 }
 
 const TextField = forwardRef<HTMLInputElement, Props>(
@@ -28,21 +28,17 @@ const TextField = forwardRef<HTMLInputElement, Props>(
             "w-full form-input",
             active ? "filled" : "",
             error ? "error" : "",
-            label ? "" : "pt-3",
           ].join(" ")}
           id={rest.name}
           type={type}
-          autoFocus
           onKeyUp={toggle}
         />
-        {label && (
-          <label
-            htmlFor={rest.name}
-            className={["label", error ? "error" : ""].join(" ")}
-          >
-            {label}
-          </label>
-        )}
+        <label
+          htmlFor={rest.name}
+          className={["label", error ? "error" : ""].join(" ")}
+        >
+          {label}
+        </label>
         {error && <p className="ml-2 text-sm text-left text-error">{error}</p>}
       </div>
     );

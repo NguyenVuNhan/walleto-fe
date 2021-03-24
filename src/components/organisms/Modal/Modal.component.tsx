@@ -55,7 +55,7 @@ const Modal: FC<Props> = ({ className, open, children, onClose }) => {
               variants={variants}
               ref={ref}
               className={[
-                "inline-block overflow-hidden rounded-lg shadow-xl sm:max-w-lg sm:w-full",
+                "inline-block overflow-hidden rounded-lg shadow-xl sm:max-w-lg sm:w-full overflow-visible",
                 className,
               ].join(" ")}
               role="dialog"
