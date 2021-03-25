@@ -1,12 +1,19 @@
 import React, { FC, useState } from "react";
 import CancelIcon from "src/assets/Icons/Cancel";
 import LocalMallIcon from "src/assets/Icons/LocalMall";
+import Alert from "src/components/atoms/Alert";
 import IconButton from "src/components/atoms/IconButton";
 import { useInitFunction } from "src/hooks";
 import { Props } from "./Categories.container";
 import CategoryModal from "./components/CategoryModal";
 
-const Categories: FC<Props> = ({ onGetCategories, income, expense }) => {
+const Categories: FC<Props> = ({
+  onGetCategories,
+  onDeleteCategory,
+  error,
+  income,
+  expense,
+}) => {
   useInitFunction(onGetCategories);
 
   const [activeCategory, setActiveCategory] = useState(-1);
@@ -16,27 +23,32 @@ const Categories: FC<Props> = ({ onGetCategories, income, expense }) => {
     if (activeCategory === -1 || activeCategory !== id) setActiveCategory(id);
   };
 
-  const expandOptions = (id: number) => (
-    <>
-      <div className="flex-grow">
-        <IconButton
-          className="float-right text-red-400 hover-scale-110"
-          onClick={() => setActiveCategory(-1)}
-        >
-          <CancelIcon />
-        </IconButton>
-      </div>
-      <div className="flex justify-end w-full gap-2 p-2">
-        <button className="w-24 btn btn-error">Delete</button>
-        <button
-          className="w-24 btn btn-secondary"
-          onClick={() => setModalOpen(true)}
-        >
-          Edit
-        </button>
-      </div>
-    </>
-  );
+  const expandOptions = (id: number) => {
+    const deleteCategory = () => onDeleteCategory(id);
+    return (
+      <>
+        <div className="flex-grow">
+          <IconButton
+            className="float-right text-red-400 hover-scale-110"
+            onClick={() => setActiveCategory(-1)}
+          >
+            <CancelIcon />
+          </IconButton>
+        </div>
+        <div className="flex justify-end w-full gap-2 p-2">
+          <button className="w-24 btn btn-error" onClick={deleteCategory}>
+            Delete
+          </button>
+          <button
+            className="w-24 btn btn-secondary"
+            onClick={() => setModalOpen(true)}
+          >
+            Edit
+          </button>
+        </div>
+      </>
+    );
+  };
 
   const categoryItem = (
     { id, ...category }: ShortCategory,
@@ -80,6 +92,11 @@ const Categories: FC<Props> = ({ onGetCategories, income, expense }) => {
           Categories
         </p>
 
+        {error && (
+          <div className="px-2">
+            <Alert>{error?.msg}</Alert>
+          </div>
+        )}
         <div className="w-full p-2 font-medium bg-background">Expense</div>
         <div className="">{categoryList(expense)}</div>
         <div className="w-full p-2 font-medium bg-background">Income</div>

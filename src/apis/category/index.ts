@@ -13,3 +13,9 @@ export const addCategory = async (
   const res = await axios.post<AddCategoryRes>("/api/category", data);
   return res.data;
 };
+
+export type DeleteCategoryRes = BaseBody<Category>;
+export const deleteCategory = async (data: number): Promise<AddCategoryRes> => {
+  const res = await axios.delete<DeleteCategoryRes>(`/api/category/${data}`);
+  return res.data;
+};
