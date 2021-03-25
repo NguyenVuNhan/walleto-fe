@@ -1,22 +1,13 @@
-import { logoutTypes } from "src/components/organisms/Header";
-import { loginTypes } from "src/pages/Login";
-import { registerTypes } from "src/pages/Register";
-
-export type ErrorAction =
-  | loginTypes.LoginFailureAction
-  | registerTypes.RegisterFailureAction
-  | logoutTypes.LogoutFailureAction;
+export type ErrorAction = BaseFailureAction;
 
 export interface ErrorState {
-  [loginTypes.LOGIN]?: loginTypes.LoginFailureAction["error"];
-  [registerTypes.REGISTER]?: loginTypes.LoginFailureAction["error"];
-  [logoutTypes.LOGOUT]?: logoutTypes.LogoutFailureAction["error"];
+  [key: string]: BaseFailureAction["error"] | null;
 }
 
 const getErrorMatches = (actionType: string) =>
   /(.*)_(REQUEST|SUCCESS|FAILURE)/.exec(actionType);
 
-const errorReducer = (
+const errorsReducer = (
   state: ErrorState = {},
   action: ErrorAction
 ): ErrorState => {
@@ -33,4 +24,4 @@ const errorReducer = (
   };
 };
 
-export default errorReducer;
+export default errorsReducer;

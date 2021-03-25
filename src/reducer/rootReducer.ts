@@ -5,13 +5,13 @@ import {
   transactionsReducer,
 } from "src/pages/Transactions";
 import authReducer from "./authReducer";
-import errorReducer from "./errorReducer";
+import errorsReducer from "./errorReducer";
 import loadingReducer from "./loadingReducer";
 
 const rootReducer = combineReducers({
   auth: authReducer,
   loading: loadingReducer,
-  error: errorReducer,
+  errors: errorsReducer,
   transactions: transactionsReducer,
   transaction: transactionReducer,
   categories: categoriesReducer,

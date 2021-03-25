@@ -17,8 +17,10 @@ interface DispatchProps {
   onLogout(): void;
 }
 
-const mapStateToProps: MapStateToProps<StateProps, OwnProps> = ({ error }) => {
-  return { error: error[LOGOUT] };
+const mapStateToProps: MapStateToProps<StateProps, OwnProps> = ({ errors }) => {
+  const error: LogoutFailureAction["error"] | null = errors[LOGOUT];
+  if (error) return { error };
+  else return {};
 };
 
 const mapDispatchToProps: MapDispatchToProps<DispatchProps, OwnProps> = (

@@ -13,8 +13,10 @@ interface DispatchProps {
   onRegister(data: RegisterForm): void;
 }
 
-const mapStateToProps: MapStateToProps<StateProps, OwnProps> = ({ error }) => {
-  return { error: error[REGISTER] };
+const mapStateToProps: MapStateToProps<StateProps, OwnProps> = ({ errors }) => {
+  const error: RegisterFailureAction["error"] | null = errors[REGISTER];
+  if (error) return { error };
+  else return {};
 };
 
 const mapDispatchToProps: MapDispatchToProps<DispatchProps, OwnProps> = (

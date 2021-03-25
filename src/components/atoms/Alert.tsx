@@ -1,8 +1,17 @@
 import React, { FC } from "react";
 
-const Alert: FC = ({ children }) => {
+interface Props {
+  className?: string;
+}
+
+const Alert: FC<Props> = ({ children, className }) => {
   return (
-    <div className="my-2 p-4 bg-red-300 w-full rounded text-red-500 leading-none">
+    <div
+      className={[
+        "my-2 p-4 bg-red-300 w-full rounded text-red-500 leading-none text-left",
+        className,
+      ].join(" ")}
+    >
       <svg
         className="inline-block w-6 mr-2 text-left text-red-600 fill-current"
         focusable="false"

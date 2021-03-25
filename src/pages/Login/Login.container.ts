@@ -13,8 +13,10 @@ interface DispatchProps {
   onLogin(data: LoginForm): void;
 }
 
-const mapStateToProps: MapStateToProps<StateProps, OwnProps> = ({ error }) => {
-  return { error: error[LOGIN] };
+const mapStateToProps: MapStateToProps<StateProps, OwnProps> = ({ errors }) => {
+  const error: LoginFailureAction["error"] | null = errors[LOGIN];
+  if (error) return { error };
+  else return {};
 };
 
 const mapDispatchToProps: MapDispatchToProps<DispatchProps, OwnProps> = (

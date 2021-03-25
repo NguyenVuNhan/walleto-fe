@@ -10,6 +10,7 @@ import {
 import { getCategories, GetCategoriesRes } from "src/apis/category";
 import * as actions from "./Categories.actions";
 import * as types from "./Categories.types";
+import { addCategorySaga } from "./components/CategoryModal";
 
 function* onCategories(_: types.GetCategoriesAction) {
   yield put(actions.getCategoriesRequest());
@@ -34,5 +35,5 @@ function* watchOnCategories() {
 }
 
 export default function* categoriesSaga(): Generator<AllEffect<ForkEffect>> {
-  yield all([fork(watchOnCategories)]);
+  yield all([fork(watchOnCategories), fork(addCategorySaga)]);
 }

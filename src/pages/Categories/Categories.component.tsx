@@ -4,7 +4,7 @@ import LocalMallIcon from "src/assets/Icons/LocalMall";
 import IconButton from "src/components/atoms/IconButton";
 import { useInitFunction } from "src/hooks";
 import { Props } from "./Categories.container";
-import CategoryModal from "./components/CategoryModal/CategoryModal.component";
+import CategoryModal from "./components/CategoryModal";
 
 const Categories: FC<Props> = ({ onGetCategories, income, expense }) => {
   useInitFunction(onGetCategories);

@@ -23,6 +23,7 @@ const Select = forwardRef<HTMLSelectElement, Props>(
     return (
       <div className={["relative", className].join(" ")}>
         <select
+          defaultValue=""
           {...rest}
           ref={ref}
           className={[
@@ -33,7 +34,7 @@ const Select = forwardRef<HTMLSelectElement, Props>(
           id={rest.name}
           onClick={toggle}
         >
-          <option disabled selected hidden></option>
+          <option disabled hidden></option>
           {children}
         </select>
         <label
