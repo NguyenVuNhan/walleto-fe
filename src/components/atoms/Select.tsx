@@ -13,10 +13,10 @@ interface Props extends SelectHTMLAttributes<HTMLSelectElement> {
 
 const Select = forwardRef<HTMLSelectElement, Props>(
   ({ className, children, onClick, error, label, ...rest }, ref) => {
-    const [open, setOpen] = useState(false);
+    const [active, setActive] = useState(!!rest.value || !!rest.defaultValue);
 
     const toggle: MouseEventHandler<HTMLSelectElement> = (e) => {
-      setOpen(!!e.currentTarget.value);
+      setActive(!!e.currentTarget.value);
       onClick && onClick(e);
     };
 
@@ -28,7 +28,7 @@ const Select = forwardRef<HTMLSelectElement, Props>(
           ref={ref}
           className={[
             "w-full form-input ring-red-100",
-            open ? "filled" : "",
+            active ? "filled" : "",
             error ? "error" : "",
           ].join(" ")}
           id={rest.name}

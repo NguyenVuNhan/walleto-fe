@@ -1,10 +1,19 @@
 import { connect, MapDispatchToProps, MapStateToProps } from "react-redux";
-import { deleteCategory, getCategories } from "./Categories.actions";
+import {
+  deleteCategory,
+  deleteCategoryFailure,
+  getCategories,
+  getCategoriesFailure,
+} from "./Categories.actions";
 import CategoriesComponent from "./Categories.component";
 import {
   DeleteCategoryFailureAction,
   DELETE_CATEGORY,
 } from "./Categories.types";
+import {
+  addCategoryFailure,
+  updateCategoryFailure,
+} from "./components/CategoryModal/CategoryModal.actions";
 
 interface OwnProps {}
 
@@ -17,6 +26,7 @@ type StateProps = {
 interface DispatchProps {
   onGetCategories(): void;
   onDeleteCategory(id: number): void;
+  clearError(): void;
 }
 
 const mapStateToProps: MapStateToProps<StateProps, OwnProps> = ({
@@ -37,6 +47,12 @@ const mapDispatchToProps: MapDispatchToProps<DispatchProps, OwnProps> = (
   },
   onDeleteCategory: (id) => {
     dispatch(deleteCategory(id));
+  },
+  clearError: () => {
+    dispatch(getCategoriesFailure());
+    dispatch(deleteCategoryFailure());
+    dispatch(addCategoryFailure());
+    dispatch(updateCategoryFailure());
   },
 });
 

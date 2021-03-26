@@ -17,7 +17,7 @@ export const getCategoriesSuccess = (
 });
 
 export const getCategoriesFailure = (
-  error: BaseError
+  error?: BaseError
 ): types.GetCategoriesFailureAction => ({
   type: types.GET_CATEGORIES_FAILURE,
   error,
@@ -43,7 +43,7 @@ export const deleteCategorySuccess = (
 });
 
 export const deleteCategoryFailure = (
-  error: BaseError
+  error?: BaseError
 ): types.DeleteCategoryFailureAction => ({
   type: types.DELETE_CATEGORY_FAILURE,
   error,

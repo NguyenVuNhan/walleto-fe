@@ -6,69 +6,84 @@ import IconButton from "src/components/atoms/IconButton";
 import { useInitFunction } from "src/hooks";
 import { Props } from "./Categories.container";
 import CategoryModal from "./components/CategoryModal";
+import { CategoryProp } from "./components/CategoryModal/CategoryModal.container";
 
 const Categories: FC<Props> = ({
   onGetCategories,
   onDeleteCategory,
   error,
+  clearError,
   income,
   expense,
 }) => {
+  // Fetch data
   useInitFunction(onGetCategories);
+  useInitFunction(clearError);
+
   const [activeCategory, setActiveCategory] = useState(-1);
+  const [editingCategory, setEditingCategory] = useState<CategoryProp>();
   const [modalOpen, setModalOpen] = useState(false);
+  const [modalType, setModalType] = useState<"add" | "update">("add");
+
+  const onModalClose = () => {
+    setModalOpen(false);
+    setModalType("add");
+    clearError();
+  };
 
   const expandCategory = (id: number) => {
     if (activeCategory === -1 || activeCategory !== id) setActiveCategory(id);
   };
 
-  const expandOptions = (id: number) => {
-    const deleteCategory = () => onDeleteCategory(id);
-    return (
-      <>
-        <div className="flex-grow">
-          <IconButton
-            className="float-right text-red-400 hover-scale-110"
-            onClick={() => setActiveCategory(-1)}
-          >
-            <CancelIcon />
-          </IconButton>
-        </div>
-        <div className="flex justify-end w-full gap-2 p-2">
-          <button className="w-24 btn btn-error" onClick={deleteCategory}>
-            Delete
-          </button>
-          <button
-            className="w-24 btn btn-secondary"
-            onClick={() => setModalOpen(true)}
-          >
-            Edit
-          </button>
-        </div>
-      </>
-    );
+  const deleteCategory = () => {
+    activeCategory >= 0 && onDeleteCategory(activeCategory);
   };
 
-  const categoryItem = (
-    { id, ...category }: ShortCategory,
-    isParent: boolean = true
-  ) => (
+  const editCategory = (category: CategoryProp) => () => {
+    setEditingCategory(category);
+    setModalType("update");
+    setModalOpen(true);
+  };
+
+  const categoryItem = ({ id, name, type }: ShortCategory, parent?: number) => (
     <div
       key={id}
       className={[
         "py-1 flex items-center hover:bg-onSurface hover:bg-opacity-10 flex-wrap",
-        isParent ? "pl-3" : "pl-6",
+        parent ? "pl-6" : "pl-3",
       ].join(" ")}
       onClick={() => expandCategory(id)}
     >
       <LocalMallIcon
         className={[
           "p-2 mr-4 text-yellow-500 bg-gray-200 rounded-full",
-          isParent ? "w-12 h-12" : "w-10 h-10",
+          parent ? "w-10 h-10" : "w-12 h-12",
         ].join(" ")}
       />
-      {category.name}
-      {activeCategory === id && expandOptions(id)}
+      {name}
+      {activeCategory === id && (
+        <>
+          <div className="flex-grow">
+            <IconButton
+              className="float-right text-red-400 hover-scale-110"
+              onClick={() => setActiveCategory(-1)}
+            >
+              <CancelIcon />
+            </IconButton>
+          </div>
+          <div className="flex justify-end w-full p-2 gap-2">
+            <button className="w-24 btn btn-error" onClick={deleteCategory}>
+              Delete
+            </button>
+            <button
+              className="w-24 btn btn-secondary"
+              onClick={editCategory({ id, type, name, parent })}
+            >
+              Edit
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 
@@ -77,7 +92,7 @@ const Categories: FC<Props> = ({
       {categories.map((category) => (
         <div key={category.id} className="py-2">
           {categoryItem(category)}
-          {category.children.map((c) => categoryItem(c, false))}
+          {category.children.map((c) => categoryItem(c, category.id))}
         </div>
       ))}
     </>
@@ -85,7 +100,12 @@ const Categories: FC<Props> = ({
 
   return (
     <div className="flex justify-center text-onSurface">
-      <CategoryModal open={modalOpen} onClose={() => setModalOpen(false)} />
+      <CategoryModal
+        open={modalOpen}
+        onClose={onModalClose}
+        type={modalType}
+        category={editingCategory}
+      />
       <div className="w-full md:w-1/2 widget-base">
         <p className="w-full p-2 font-serif text-5xl font-medium text-center">
           Categories

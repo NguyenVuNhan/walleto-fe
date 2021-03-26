@@ -1,7 +1,7 @@
 export type ErrorAction = BaseFailureAction;
 
 export interface ErrorState {
-  [key: string]: BaseFailureAction["error"] | null;
+  [key: string]: BaseFailureAction["error"] | undefined;
 }
 
 const getErrorMatches = (actionType: string) =>
@@ -20,7 +20,7 @@ const errorsReducer = (
   const [, requestName, requestStatus] = matches;
   return {
     ...state,
-    [requestName]: requestStatus === "FAILURE" ? action.error : null,
+    [requestName]: requestStatus === "FAILURE" ? action.error : undefined,
   };
 };
 

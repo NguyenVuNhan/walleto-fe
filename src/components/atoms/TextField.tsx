@@ -12,7 +12,9 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 
 const TextField = forwardRef<HTMLInputElement, Props>(
   ({ className, onKeyUp, label, error, type = "text", ...rest }, ref) => {
-    const [active, setActive] = React.useState(false);
+    const [active, setActive] = React.useState(
+      !!rest.value || !!rest.defaultValue
+    );
 
     const toggle: KeyboardEventHandler<HTMLInputElement> = (e) => {
       setActive(!!e.currentTarget.value);

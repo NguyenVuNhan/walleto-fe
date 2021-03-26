@@ -26,5 +26,5 @@ interface BaseSuccessAction<T = string, P = BasePayload> {
 
 interface BaseFailureAction<T = string, E = BaseError> {
   type: T;
-  error: E;
+  error?: E;
 }

@@ -14,8 +14,20 @@ export const addCategory = async (
   return res.data;
 };
 
+export type UpdateCategoryRes = BaseBody<Category>;
+export const updateCategory = async (
+  id: number,
+  data: Partial<CategoryForm>
+): Promise<UpdateCategoryRes> => {
+  console.log(id, data);
+  const res = await axios.post<UpdateCategoryRes>(`/api/category/${id}`, data);
+  return res.data;
+};
+
 export type DeleteCategoryRes = BaseBody<Category>;
-export const deleteCategory = async (data: number): Promise<AddCategoryRes> => {
+export const deleteCategory = async (
+  data: number
+): Promise<DeleteCategoryRes> => {
   const res = await axios.delete<DeleteCategoryRes>(`/api/category/${data}`);
   return res.data;
 };
