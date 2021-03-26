@@ -37,7 +37,6 @@ const mapDispatchToProps: MapDispatchToProps<DispatchProps, OwnProps> = (
   },
   onDeleteCategory: (id) => {
     dispatch(deleteCategory(id));
-    dispatch(getCategories());
   },
 });
 

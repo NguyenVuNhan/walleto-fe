@@ -1,4 +1,3 @@
-import { forwardTo } from "src/helpers/router";
 import {
   all,
   AllEffect,
@@ -11,8 +10,9 @@ import {
 import { addCategory, AddCategoryRes } from "src/apis/category";
 import * as actions from "./CategoryModal.actions";
 import * as types from "./CategoryModal.types";
+import { getCategories } from "../../Categories.actions";
 
-function* onAddCategory({ payload }: types.AddCategoryAction) {
+function* onAddCategory({ payload, callback }: types.AddCategoryAction) {
   yield put(actions.addCategoryRequest());
   try {
     const res: AddCategoryRes = yield call(addCategory, payload);
@@ -25,9 +25,11 @@ function* onAddCategory({ payload }: types.AddCategoryAction) {
 
     // Success
     yield put(actions.addCategorySuccess(res.data));
-    forwardTo("/categories");
+    yield put(getCategories());
+    callback && callback("success");
   } catch (err) {
     yield put(actions.addCategoryFailure(err.response.data.data));
+    callback && callback("error");
   }
 }
 

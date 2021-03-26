@@ -15,7 +15,6 @@ const Categories: FC<Props> = ({
   expense,
 }) => {
   useInitFunction(onGetCategories);
-
   const [activeCategory, setActiveCategory] = useState(-1);
   const [modalOpen, setModalOpen] = useState(false);
 

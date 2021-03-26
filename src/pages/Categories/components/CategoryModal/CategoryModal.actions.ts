@@ -1,10 +1,12 @@
 import * as types from "./CategoryModal.types";
 
 export const addCategory = (
-  payload: CategoryForm
+  payload: CategoryForm,
+  callback?: () => void
 ): types.AddCategoryAction => ({
   type: types.ADD_CATEGORY,
   payload,
+  callback,
 });
 
 export const addCategoryRequest = (): types.AddCategoryRequestAction => ({

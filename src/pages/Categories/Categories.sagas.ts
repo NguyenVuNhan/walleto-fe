@@ -48,6 +48,7 @@ function* onDeleteCategory({ payload }: types.DeleteCategoryAction) {
 
     // Success
     yield put(actions.deleteCategorySuccess(res.data));
+    yield put(actions.getCategories());
   } catch (err) {
     yield put(actions.deleteCategoryFailure(err.response.data.data));
   }

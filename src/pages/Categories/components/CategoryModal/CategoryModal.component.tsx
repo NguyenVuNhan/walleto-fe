@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { useForm } from "react-hook-form";
 import Alert from "src/components/atoms/Alert";
 import Radio from "src/components/atoms/Radio";
@@ -7,8 +7,25 @@ import TextField from "src/components/atoms/TextField";
 import Modal from "src/components/organisms/Modal";
 import { Props } from "./CategoryModal.container";
 
-const CategoryModal: FC<Props> = ({ open, onClose, onAddCategory, error }) => {
+const CategoryModal: FC<Props> = ({
+  open,
+  onClose,
+  onAddCategory,
+  error,
+  income,
+  expense,
+  type = "add",
+}) => {
   const { handleSubmit, register, errors } = useForm<CategoryForm>();
+  const [currentType, setCurrentType] = useState<"Expense" | "Income">(
+    "Expense"
+  );
+
+  const onSubmit = (data: CategoryForm) => {
+    onAddCategory(data, (type) => {
+      type === "success" && onClose && onClose();
+    });
+  };
 
   return (
     <Modal
@@ -16,7 +33,7 @@ const CategoryModal: FC<Props> = ({ open, onClose, onAddCategory, error }) => {
       open={open}
       onClose={onClose}
     >
-      <form onSubmit={handleSubmit(onAddCategory)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="px-2 pt-5">
           <p className="font-serif text-3xl">Add category</p>
           <div className="my-2 divider"></div>
@@ -29,6 +46,7 @@ const CategoryModal: FC<Props> = ({ open, onClose, onAddCategory, error }) => {
             value="Expense"
             label="Expense"
             ref={register}
+            onClick={() => setCurrentType("Expense")}
             defaultChecked
           />
           <Radio
@@ -36,6 +54,7 @@ const CategoryModal: FC<Props> = ({ open, onClose, onAddCategory, error }) => {
             name="type"
             value="Income"
             label="Income"
+            onClick={() => setCurrentType("Income")}
             ref={register}
           />
           <TextField
@@ -52,9 +71,18 @@ const CategoryModal: FC<Props> = ({ open, onClose, onAddCategory, error }) => {
             ref={register}
           >
             <option value="-1">None</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
+            {currentType === "Expense" &&
+              expense.map((v, i) => (
+                <option value={v.id} key={`expense-${i}`}>
+                  {v.name}
+                </option>
+              ))}
+            {currentType === "Income" &&
+              income.map((v, i) => (
+                <option value={v.id} key={`income-${i}`}>
+                  {v.name}
+                </option>
+              ))}
           </Select>
         </div>
         <div className="px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse gap-2">

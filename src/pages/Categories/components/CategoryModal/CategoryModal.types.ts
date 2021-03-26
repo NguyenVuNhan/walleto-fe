@@ -2,6 +2,7 @@ export const ADD_CATEGORY = "category/addCategory/ADD_CATEGORY";
 export interface AddCategoryAction {
   type: typeof ADD_CATEGORY;
   payload: CategoryForm;
+  callback?: ActionCallback;
 }
 
 export const ADD_CATEGORY_REQUEST = "category/addCategory/ADD_CATEGORY_REQUEST";
