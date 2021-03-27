@@ -6,21 +6,24 @@ const useClickOutside = <T extends HTMLElement>(callback?: Function) => {
 
   useEffect(() => {
     callbackRef.current = callback;
-  }, [callback]);
+  }, []);
 
   useEffect(() => {
     if (!ref.current) return;
 
     const handleClick = (e: MouseEvent) => {
-      if (!ref.current?.contains(e.target as Node)) {
+      console.log("click");
+
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        console.log("close");
         callbackRef.current && callbackRef.current();
       }
     };
 
-    document.addEventListener("mousedown", handleClick);
+    document.addEventListener("mouseup", handleClick);
 
     return () => {
-      document.removeEventListener("mousedown", handleClick);
+      document.removeEventListener("mouseup", handleClick);
     };
   }, []);
 
