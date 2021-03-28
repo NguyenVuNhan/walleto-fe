@@ -12,10 +12,7 @@ const useClickOutside = <T extends HTMLElement>(callback?: Function) => {
     if (!ref.current) return;
 
     const handleClick = (e: MouseEvent) => {
-      console.log("click");
-
       if (ref.current && !ref.current.contains(e.target as Node)) {
-        console.log("close");
         callbackRef.current && callbackRef.current();
       }
     };
