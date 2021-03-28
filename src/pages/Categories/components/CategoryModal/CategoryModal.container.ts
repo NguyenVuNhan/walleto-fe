@@ -26,42 +26,39 @@ interface OwnProps {
 }
 
 interface StateProps {
-  error?: AddCategoryFailureAction["error"];
+  error?:
+    | AddCategoryFailureAction["error"]
+    | UpdateCategoryFailureAction["error"];
   income: { id: number; name: string }[];
   expense: { id: number; name: string }[];
 }
 
 interface DispatchProps {
-  onUpdateCategory(
-    id: number,
-    data: Partial<CategoryForm>,
-    cb?: ActionCallback
-  ): void;
-  onAddCategory(data: CategoryForm, cb?: ActionCallback): void;
+  onSubmit(cb?: ActionCallback): (data: CategoryForm) => void;
 }
 
 const mapStateToProps: MapStateToProps<StateProps, OwnProps> = (
   { errors, categories },
   { type }
 ) => {
-  const error:
-    | AddCategoryFailureAction["error"]
-    | UpdateCategoryFailureAction["error"]
-    | null = errors[type === "add" ? ADD_CATEGORY : UPDATE_CATEGORY];
-  console.log(errors[UPDATE_CATEGORY]);
-  console.log(error);
+  const error: StateProps["error"] =
+    errors[type === "update" ? UPDATE_CATEGORY : ADD_CATEGORY];
   const income = categories.income.map((v) => ({ id: v.id, name: v.name }));
   const expense = categories.expense.map((v) => ({ id: v.id, name: v.name }));
   return { income, expense, error: error || undefined };
 };
 
 const mapDispatchToProps: MapDispatchToProps<DispatchProps, OwnProps> = (
-  dispatch
+  dispatch,
+  { type, category }
 ) => ({
-  onUpdateCategory: (id, data, cb) => {
-    dispatch(updateCategory(id, data, cb));
-  },
-  onAddCategory: (data, cb) => {
+  onSubmit: (cb) => (data) => {
+    if (type === "update") {
+      if (data.name === category?.name)
+        delete (data as Partial<CategoryForm>).name;
+      dispatch(updateCategory(category?.id as number, data, cb));
+      return;
+    }
     dispatch(addCategory(data, cb));
   },
 });

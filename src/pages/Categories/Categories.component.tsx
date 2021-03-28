@@ -18,7 +18,7 @@ const Categories: FC<Props> = ({
 }) => {
   // Fetch data
   useInitFunction(onGetCategories);
-  useInitFunction(clearError);
+  useInitFunction(clearError, error);
 
   const [activeCategory, setActiveCategory] = useState(-1);
   const [editingCategory, setEditingCategory] = useState<CategoryProp>();
@@ -56,7 +56,7 @@ const Categories: FC<Props> = ({
     >
       <LocalMallIcon
         className={[
-          "p-2 mr-4 text-yellow-500 bg-gray-200 rounded-full",
+          "p-2 mr-4 bg-background bg-opacity-80 rounded-full text-secondary",
           parent ? "w-10 h-10" : "w-12 h-12",
         ].join(" ")}
       />

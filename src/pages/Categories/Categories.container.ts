@@ -26,7 +26,7 @@ type StateProps = {
 interface DispatchProps {
   onGetCategories(): void;
   onDeleteCategory(id: number): void;
-  clearError(): void;
+  clearError(error?: StateProps["error"]): void;
 }
 
 const mapStateToProps: MapStateToProps<StateProps, OwnProps> = ({
@@ -48,11 +48,13 @@ const mapDispatchToProps: MapDispatchToProps<DispatchProps, OwnProps> = (
   onDeleteCategory: (id) => {
     dispatch(deleteCategory(id));
   },
-  clearError: () => {
-    dispatch(getCategoriesFailure());
-    dispatch(deleteCategoryFailure());
-    dispatch(addCategoryFailure());
-    dispatch(updateCategoryFailure());
+  clearError: (error) => {
+    if (error) {
+      dispatch(getCategoriesFailure());
+      dispatch(deleteCategoryFailure());
+      dispatch(addCategoryFailure());
+      dispatch(updateCategoryFailure());
+    }
   },
 });
 

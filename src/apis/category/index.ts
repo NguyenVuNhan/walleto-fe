@@ -19,7 +19,6 @@ export const updateCategory = async (
   id: number,
   data: Partial<CategoryForm>
 ): Promise<UpdateCategoryRes> => {
-  console.log(id, data);
   const res = await axios.post<UpdateCategoryRes>(`/api/category/${id}`, data);
   return res.data;
 };

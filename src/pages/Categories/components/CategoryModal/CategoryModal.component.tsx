@@ -10,13 +10,12 @@ import { Props } from "./CategoryModal.container";
 const CategoryModal: FC<Props> = ({
   open,
   onClose,
-  onAddCategory,
-  onUpdateCategory,
   error,
   income,
   expense,
   type = "add",
   category,
+  onSubmit,
 }) => {
   const { handleSubmit, register, errors } = useForm<CategoryForm>({
     defaultValues: { ...category },
@@ -25,16 +24,8 @@ const CategoryModal: FC<Props> = ({
     "Expense"
   );
 
-  const onSubmit = (data: Partial<CategoryForm>) => {
-    const cb = (type?: string) => {
-      type === "success" && onClose && onClose();
-    };
-    if (type === "add") {
-      onAddCategory(data as CategoryForm, cb);
-    } else {
-      if (data.name === category?.name) delete data.name;
-      onUpdateCategory(category?.id as number, data, cb);
-    }
+  const callback = (type?: string) => {
+    type === "success" && onClose && onClose();
   };
 
   return (
@@ -43,9 +34,11 @@ const CategoryModal: FC<Props> = ({
       open={open}
       onClose={onClose}
     >
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit(callback))}>
         <div className="px-2 pt-5">
-          <p className="font-serif text-3xl">Add category</p>
+          <p className="font-serif text-3xl">
+            {type === "update" ? "Update" : "Add"} category
+          </p>
           <div className="my-2 divider"></div>
         </div>
         <div className="px-6 overflow-visible grid grid-cols-6 sm:grid-cols-12 gap-3">
