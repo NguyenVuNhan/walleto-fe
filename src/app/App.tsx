@@ -4,6 +4,7 @@ import Routes from "src/routes";
 import ThemeProvider from "src/themes";
 
 function App() {
+  // TODO: Add loading provider for the application
   return (
     <ThemeProvider>
       <Routes />

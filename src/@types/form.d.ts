@@ -12,6 +12,13 @@ interface RegisterForm {
 
 interface TransactionsForm {}
 
+interface WalletForm {
+  name: string;
+  currency: string;
+  balance?: number;
+  exclude?: boolean;
+}
+
 interface CategoryForm {
   name: string;
   type: "Expense" | "Income";

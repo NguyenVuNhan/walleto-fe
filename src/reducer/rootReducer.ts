@@ -4,6 +4,7 @@ import {
   transactionReducer,
   transactionsReducer,
 } from "src/pages/Transactions";
+import { walletReducer, walletsReducer } from "src/pages/Wallets";
 import authReducer from "./authReducer";
 import errorsReducer from "./errorReducer";
 import loadingReducer from "./loadingReducer";
@@ -15,6 +16,8 @@ const rootReducer = combineReducers({
   transactions: transactionsReducer,
   transaction: transactionReducer,
   categories: categoriesReducer,
+  wallets: walletsReducer,
+  wallet: walletReducer,
 });
 
 export default rootReducer;

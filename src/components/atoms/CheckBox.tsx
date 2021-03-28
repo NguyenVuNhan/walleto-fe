@@ -8,14 +8,7 @@ const CheckBox = forwardRef<HTMLInputElement, Props>(
   ({ className, name, label, ...rest }, ref) => {
     return (
       <div className={["flex items-center", className].join(" ")}>
-        <input
-          {...rest}
-          id={name}
-          type="checkbox"
-          name={name}
-          value="Expense"
-          ref={ref}
-        />
+        <input {...rest} id={name} type="checkbox" name={name} ref={ref} />
         <label className="ml-2" htmlFor={name}>
           {label}
         </label>

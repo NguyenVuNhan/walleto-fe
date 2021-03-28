@@ -17,6 +17,19 @@ interface NetIncomeData {
   expense: number;
 }
 
+// Wallet
+interface ShortWallet {
+  id: number;
+  name: string;
+  balance: number;
+}
+
+interface Wallet extends ShortWallet {
+  currency: string;
+  exclude: boolean;
+  archived: boolean;
+}
+
 // Category
 interface ShortCategory {
   id: number;
@@ -27,7 +40,6 @@ interface ShortCategory {
 
 interface Category extends Omit<ShortCategory, "children"> {
   parent: Category;
-  user: User;
 }
 
 // Transactions
@@ -41,7 +53,6 @@ interface ShortTransaction {
 
 interface Transaction extends ShortTransaction {
   exclude: boolean;
-  user: User;
   wallet: {
     id: number;
     name: string;

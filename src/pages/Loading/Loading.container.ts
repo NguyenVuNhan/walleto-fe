@@ -15,7 +15,7 @@ const mapStateToProps: MapStateToProps<StateProps, OwnProps> = (
 ) => {
   const isLoading =
     Object.keys(loading).length > 0 &&
-    Object.values(loading).every((k) => k === true);
+    Object.values(loading).reduce((k, cu) => k || cu);
   return { ...props, isLoading };
 };
 
