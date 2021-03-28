@@ -13,20 +13,11 @@ const TransactionItem: FC<Props> = ({
   onClose,
   className,
   transaction,
-  id,
+  loading,
 }) => {
-  useInitFunction(onGetTransaction, id, transaction?.id);
+  useInitFunction(onGetTransaction, transaction?.id);
 
-  if (transaction === null || transaction.id !== id)
-    return (
-      <div className="flex justify-center align-center py-5 h-32 w-full">
-        <Spinner />
-      </div>
-    );
-
-  const deleteTransaction = () => {
-    onDeleteTransaction(id);
-  };
+  if (transaction === null || loading) return <Spinner className="h-32" />;
 
   return (
     <Animation className={["w-full bg-surface", className].join(" ")}>
@@ -53,7 +44,7 @@ const TransactionItem: FC<Props> = ({
       </div>
       <div className="divider"></div>
       <div className="flex justify-end px-2 mt-2 gap-2">
-        <button className="w-24 btn btn-error" onClick={deleteTransaction}>
+        <button className="w-24 btn btn-error" onClick={onDeleteTransaction}>
           Delete
         </button>
         <button className="w-24 btn btn-secondary">Edit</button>

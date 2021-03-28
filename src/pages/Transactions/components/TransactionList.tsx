@@ -39,7 +39,7 @@ const TransactionList = memo<Props>(({ transactionData }) => {
                       className="p-2"
                       onClick={() => setActiveTransaction(transaction.id)}
                     >
-                      <LocalMallIcon className="float-left w-12 h-12 p-2 mr-4 text-yellow-400 bg-gray-100 rounded-full" />
+                      <LocalMallIcon className="float-left w-12 h-12 p-2 mr-4 bg-background bg-opacity-80 rounded-full text-secondary" />
                       <div
                         className={[
                           "float-right",

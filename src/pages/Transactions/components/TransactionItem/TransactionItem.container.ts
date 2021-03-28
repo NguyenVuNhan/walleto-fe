@@ -2,6 +2,7 @@ import { MouseEventHandler } from "react";
 import { connect, MapDispatchToProps, MapStateToProps } from "react-redux";
 import { deleteTransaction, getTransaction } from "./TransactionItem.actions";
 import TransactionItemComponent from "./TransactionItem.component";
+import { GET_TRANSACTION } from "./TransactionItem.types";
 
 interface OwnProps {
   id: number;
@@ -11,28 +12,30 @@ interface OwnProps {
 
 interface StateProps {
   transaction: Transaction | null;
+  loading: boolean;
 }
 
 interface DispatchProps {
-  onGetTransaction(id: number, currentTransactionId?: number): void;
-  onDeleteTransaction(id: number): void;
+  onGetTransaction(currentTransactionId?: number): void;
+  onDeleteTransaction(): void;
 }
 
-const mapStateToProps: MapStateToProps<StateProps, OwnProps> = (
-  { transaction },
-  props
-) => {
-  return { transaction, ...props };
+const mapStateToProps: MapStateToProps<StateProps, OwnProps> = ({
+  transaction,
+  loading,
+}) => {
+  const isTransactionLoading = loading[GET_TRANSACTION];
+  return { transaction, loading: isTransactionLoading };
 };
 
 const mapDispatchToProps: MapDispatchToProps<DispatchProps, OwnProps> = (
-  dispatch
+  dispatch,
+  { id }
 ) => ({
-  onGetTransaction: (id, currentTransactionId) => {
-    if (id === currentTransactionId) return;
-    dispatch(getTransaction(id));
+  onGetTransaction: (currentTransactionId) => {
+    if (id !== currentTransactionId) dispatch(getTransaction(id));
   },
-  onDeleteTransaction: (id) => {
+  onDeleteTransaction: () => {
     dispatch(deleteTransaction(id));
   },
 });
