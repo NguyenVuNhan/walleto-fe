@@ -20,11 +20,14 @@ interface DispatchProps {
   onDeleteTransaction(): void;
 }
 
-const mapStateToProps: MapStateToProps<StateProps, OwnProps> = ({
-  transaction,
-  loading,
-}) => {
-  const isTransactionLoading = loading[GET_TRANSACTION];
+const mapStateToProps: MapStateToProps<StateProps, OwnProps> = (
+  { transaction, loading },
+  { id }
+) => {
+  console.log(id);
+
+  const isTransactionLoading =
+    loading[GET_TRANSACTION] || id !== (transaction as Transaction)?.id;
   return { transaction, loading: isTransactionLoading };
 };
 
