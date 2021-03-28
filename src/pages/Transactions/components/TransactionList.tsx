@@ -1,4 +1,4 @@
-import { AnimateSharedLayout, AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import React, { Fragment, memo, useState } from "react";
 import LocalMallIcon from "src/assets/Icons/LocalMall";
 import TransactionItem from "./TransactionItem";
