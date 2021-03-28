@@ -31,7 +31,6 @@ const WalletItem: FC<Props> = ({
   const onEditWallet = () => {
     setModalType("update");
     setModalOpen(true);
-    console.log("edit");
   };
 
   return (

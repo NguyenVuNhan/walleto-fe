@@ -48,7 +48,6 @@ const mapDispatchToProps: MapDispatchToProps<DispatchProps, OwnProps> = (
   onSubmit: (cb) => (data) => {
     if (type === "update") {
       if (wallet?.name === data.name) delete (data as Partial<WalletForm>).name;
-      console.log(data);
 
       dispatch(updateWallet(wallet?.id as number, data, cb));
       return;
@@ -67,8 +66,6 @@ export type Props = OwnProps & StateProps & DispatchProps;
 export default memo<OwnProps>(
   connect(mapStateToProps, mapDispatchToProps)(WalletModalComponent),
   (prev, next) => {
-    console.log(prev, next);
-
     return prev.open === next.open && prev.type === next.type;
   }
 );
