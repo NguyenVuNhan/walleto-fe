@@ -31,49 +31,45 @@ const variants: Variants = {
   },
 };
 
-const Modal: FC<Props> = ({ className, open, children, onClose }) => {
+const Modal: FC<Props> = ({ className, children, onClose }) => {
   const { ref } = useClickOutside<HTMLDivElement>(onClose);
 
   return (
-    <AnimatePresence>
-      {open && (
-        <div className="fixed inset-0 z-10 overflow-y-auto">
-          <div className="flex items-center justify-center min-h-screen sm:block sm:p-0 text-center">
-            <BackDrop />
+    <div className="fixed inset-0 z-10 overflow-y-auto">
+      <div className="flex items-center justify-center min-h-screen text-center sm:block sm:p-0">
+        <BackDrop />
 
-            <span
-              className="hidden sm:inline-block sm:align-middle sm:h-screen"
-              aria-hidden="true"
-            >
-              &#8203;
-            </span>
+        <span
+          className="hidden sm:inline-block sm:align-middle sm:h-screen"
+          aria-hidden="true"
+        >
+          &#8203;
+        </span>
 
-            <motion.div
-              initial="leave"
-              animate="enter"
-              exit="leave"
-              variants={variants}
-              ref={ref}
-              className={[
-                "inline-block overflow-hidden rounded-lg shadow-xl sm:max-w-lg sm:w-full overflow-visible",
-                className,
-              ].join(" ")}
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby="modal-headline"
-            >
-              {children}
-            </motion.div>
-          </div>
-        </div>
-      )}
-    </AnimatePresence>
+        <motion.div
+          initial="leave"
+          animate="enter"
+          exit="leave"
+          variants={variants}
+          ref={ref}
+          className={[
+            "inline-block overflow-hidden rounded-lg shadow-xl sm:max-w-lg sm:w-full overflow-visible",
+            className,
+          ].join(" ")}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modal-headline"
+        >
+          {children}
+        </motion.div>
+      </div>
+    </div>
   );
 };
 
 const ModalPortal: FC<Props> = (props) => {
   return createPortal(
-    <Modal {...props} />,
+    <AnimatePresence>{props.open && <Modal {...props} />}</AnimatePresence>,
     document.getElementsByTagName("body")[0]
   );
 };
