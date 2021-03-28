@@ -7,7 +7,7 @@ interface Props {
 const Spinner: FC<Props> = ({ className }) => {
   return (
     <div
-      className={["flex justify-center align-center w-full", className].join(
+      className={["flex justify-center items-center w-full", className].join(
         " "
       )}
     >
