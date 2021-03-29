@@ -13,12 +13,15 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const TextField = forwardRef<HTMLInputElement, Props>(
-  ({ className, onKeyUp, label, error, type = "text", ...rest }, ref) => {
+  (
+    { className, onKeyUp, label, error, type = "text", defaultValue, ...rest },
+    ref
+  ) => {
     const [active, setActive] = useState(
-      rest.value !== undefined || rest.defaultValue !== undefined
+      rest.value !== undefined || defaultValue !== undefined
     );
     const [currentValue, setCurrentValue] = useState(
-      rest.value || rest.defaultValue
+      rest.value || defaultValue
     );
 
     const toggle: KeyboardEventHandler<HTMLInputElement> = (e) => {
@@ -57,6 +60,7 @@ const TextField = forwardRef<HTMLInputElement, Props>(
     return (
       <div className={["relative", className].join(" ")}>
         <input
+          value={currentValue || ""}
           {...rest}
           ref={ref}
           className={[
@@ -67,7 +71,6 @@ const TextField = forwardRef<HTMLInputElement, Props>(
           id={rest.name}
           type="text"
           onKeyUp={toggle}
-          value={currentValue}
           onChange={textFieldHandler}
         />
         <label
