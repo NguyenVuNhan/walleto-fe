@@ -1,7 +1,9 @@
 import React, {
+  ChangeEventHandler,
   forwardRef,
   InputHTMLAttributes,
   KeyboardEventHandler,
+  useState,
 } from "react";
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
@@ -12,13 +14,44 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 
 const TextField = forwardRef<HTMLInputElement, Props>(
   ({ className, onKeyUp, label, error, type = "text", ...rest }, ref) => {
-    const [active, setActive] = React.useState(
+    const [active, setActive] = useState(
       rest.value !== undefined || rest.defaultValue !== undefined
+    );
+    const [currentValue, setCurrentValue] = useState(
+      rest.value || rest.defaultValue
     );
 
     const toggle: KeyboardEventHandler<HTMLInputElement> = (e) => {
       setActive(e.currentTarget.value !== undefined);
       onKeyUp && onKeyUp(e);
+    };
+
+    const numberFieldHandler: KeyboardEventHandler<HTMLInputElement> = (e) => {
+      console.log(e.charCode);
+
+      if (!/\d/.test(e.key)) {
+        e.preventDefault();
+      }
+
+      const value = e.currentTarget.value + e.key;
+      var n = parseInt(value.replace(/\D/g, ""), 10);
+      setCurrentValue(n.toLocaleString());
+    };
+
+    const textFieldHandler: ChangeEventHandler<HTMLInputElement> = (e) => {
+      const value = e.currentTarget.value;
+      if (type === "number") {
+        const key = value.charAt(value.length - 1);
+
+        if (!/\d/.test(key)) {
+          e.preventDefault();
+        }
+
+        var n = parseInt(value.replace(/\D/g, ""), 10);
+        !n ? setCurrentValue("0") : setCurrentValue(n.toLocaleString());
+      } else {
+        setCurrentValue(e.currentTarget.value);
+      }
     };
 
     return (
@@ -32,8 +65,10 @@ const TextField = forwardRef<HTMLInputElement, Props>(
             error ? "error" : "",
           ].join(" ")}
           id={rest.name}
-          type={type}
+          type="text"
           onKeyUp={toggle}
+          value={currentValue}
+          onChange={textFieldHandler}
         />
         <label
           htmlFor={rest.name}

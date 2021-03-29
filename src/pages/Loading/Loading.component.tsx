@@ -1,7 +1,7 @@
-import { motion, Transition, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion, Transition } from "framer-motion";
 import React, { FC } from "react";
-import { Props } from "./Loading.container";
 import Animation from "src/components/molecules/Animation";
+import { Props } from "./Loading.container";
 
 const transition: Transition = {
   duration: 0.6,

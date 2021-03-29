@@ -25,14 +25,14 @@ const WalletModal: FC<Props> = ({
     type === "success" && onClose && onClose();
   };
 
-  const numberFieldHandler: KeyboardEventHandler<HTMLInputElement> = (e) => {
-    if (!/\d/.test(e.key)) {
-      e.preventDefault();
-    }
+  // const numberFieldHandler: KeyboardEventHandler<HTMLInputElement> = (e) => {
+  //   if (!/\d/.test(e.key)) {
+  //     e.preventDefault();
+  //   }
 
-    var n = parseInt(e.currentTarget.value.replace(/\D/g, ""), 10);
-    setValue("balance", n.toLocaleString());
-  };
+  //   var n = parseInt(e.currentTarget.value.replace(/\D/g, ""), 10);
+  //   setValue("balance", n.toLocaleString());
+  // };
 
   return (
     <Modal
@@ -73,10 +73,10 @@ const WalletModal: FC<Props> = ({
             className="col-span-full sm:col-span-2 input-outlined"
             label="Initial Balance"
             name="balance"
-            onKeyPress={numberFieldHandler}
             ref={register({
               setValueAs: (v: string) => parseInt(v.replaceAll(",", ""), 10),
             })}
+            type="number"
             error={errors.balance && errors.balance.message}
             defaultValue={wallet?.balance || 0}
           />

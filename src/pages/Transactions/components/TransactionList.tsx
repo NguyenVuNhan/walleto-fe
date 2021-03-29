@@ -1,10 +1,10 @@
 import { AnimatePresence } from "framer-motion";
 import React, { Fragment, memo, useState } from "react";
 import LocalMallIcon from "src/assets/Icons/LocalMall";
-import TransactionItem from "./TransactionItem";
+import Animation from "src/components/molecules/Animation";
 import { TransactionsState } from "../Transactions.reducer";
 import DateHeader from "./DateHeader";
-import Animation from "src/components/molecules/Animation";
+import TransactionItem from "./TransactionItem";
 
 interface Props {
   transactionData: TransactionsState;
