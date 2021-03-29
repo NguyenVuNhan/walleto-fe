@@ -5,6 +5,7 @@ import SuspenseFallback from "src/components/molecules/SuspenseFallback";
 import MainTemplate from "src/components/templates/main.template";
 import AuthGuard from "src/guards/auth.guard";
 import { CategoryAction } from "src/pages/Categories";
+import { TransactionAction } from "src/pages/Transactions";
 import { WalletAction } from "src/pages/Wallets";
 
 const mainRoutes = [
@@ -26,12 +27,12 @@ const mainRoutes = [
   {
     path: "/transactions",
     component: lazy(() => import("src/pages/Transactions")),
-    action: null,
+    action: <TransactionAction />,
   },
   {
     path: "/",
     component: lazy(() => import("src/pages/Transactions")),
-    action: null,
+    action: <TransactionAction />,
   },
 ];
 
