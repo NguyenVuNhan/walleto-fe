@@ -1,4 +1,4 @@
-import React, { FC, KeyboardEventHandler, useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Alert from "src/components/atoms/Alert";
 import CheckBox from "src/components/atoms/CheckBox";
@@ -15,7 +15,7 @@ const WalletModal: FC<Props> = ({
   clearError,
   wallet,
 }) => {
-  const { handleSubmit, register, errors, setValue } = useForm<WalletForm>();
+  const { handleSubmit, register, errors } = useForm<WalletForm>();
 
   useEffect(() => {
     clearError(error);
@@ -24,15 +24,6 @@ const WalletModal: FC<Props> = ({
   const callback = (type?: string) => {
     type === "success" && onClose && onClose();
   };
-
-  // const numberFieldHandler: KeyboardEventHandler<HTMLInputElement> = (e) => {
-  //   if (!/\d/.test(e.key)) {
-  //     e.preventDefault();
-  //   }
-
-  //   var n = parseInt(e.currentTarget.value.replace(/\D/g, ""), 10);
-  //   setValue("balance", n.toLocaleString());
-  // };
 
   return (
     <Modal

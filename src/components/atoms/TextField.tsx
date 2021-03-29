@@ -29,18 +29,6 @@ const TextField = forwardRef<HTMLInputElement, Props>(
       onKeyUp && onKeyUp(e);
     };
 
-    const numberFieldHandler: KeyboardEventHandler<HTMLInputElement> = (e) => {
-      console.log(e.charCode);
-
-      if (!/\d/.test(e.key)) {
-        e.preventDefault();
-      }
-
-      const value = e.currentTarget.value + e.key;
-      var n = parseInt(value.replace(/\D/g, ""), 10);
-      setCurrentValue(n.toLocaleString());
-    };
-
     const textFieldHandler: ChangeEventHandler<HTMLInputElement> = (e) => {
       const value = e.currentTarget.value;
       if (type === "number") {
