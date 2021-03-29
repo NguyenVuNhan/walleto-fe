@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { connect, MapStateToProps } from "react-redux";
 import Loading from "./Loading.component";
 
@@ -15,10 +16,11 @@ const mapStateToProps: MapStateToProps<StateProps, OwnProps> = (
 ) => {
   const isLoading =
     Object.keys(loading).length > 0 &&
-    Object.values(loading).reduce((k, cu) => k || cu);
+    Object.values(loading).reduce((prev, curr) => prev || curr);
   return { ...props, isLoading };
 };
 
 export type Props = StateProps & OwnProps;
 
-export default connect(mapStateToProps)(Loading);
+// Never re-render this component
+export default memo<OwnProps>(connect(mapStateToProps)(Loading), () => true);
