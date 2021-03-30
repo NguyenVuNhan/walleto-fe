@@ -40,8 +40,3 @@ ReactDOM.render(
 );
 
 sagaMiddleware.run(rootSaga);
-
-// HMR
-/* if (import.meta.hot) { */
-/*   import.meta.hot.accept(); */
-/* } */

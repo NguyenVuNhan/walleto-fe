@@ -8,6 +8,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   plugins: [
     "@snowpack/plugin-typescript",
+    "@snowpack/plugin-babel",
     "@snowpack/plugin-dotenv",
     "@snowpack/plugin-react-refresh",
     "@snowpack/plugin-postcss",
