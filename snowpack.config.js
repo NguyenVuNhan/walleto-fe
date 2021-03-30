@@ -8,26 +8,35 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   plugins: [
     "@snowpack/plugin-typescript",
-    "@snowpack/plugin-babel",
     "@snowpack/plugin-dotenv",
     "@snowpack/plugin-react-refresh",
     "@snowpack/plugin-postcss",
     [
       "@snowpack/plugin-webpack",
       {
-        //     extendConfig: (config) => {
-        //       config.plugins.push(new CleanWebpackPlugin());
-        //       config.plugins.push(new CompressionPlugin());
-        //       config.plugins.push(
-        //         new HtmlWebpackPlugin({
-        //           template: `${__dirname}/public/index.html`,
-        //           favicon: `${__dirname}/public/favicon.ico`,
-        //           minify: true,
-        //           title: "Walleto",
-        //         })
-        //       );
-        //       return config;
-        //     },
+        extendConfig: (config) => {
+          config.module.rules[0] = {
+            test: /\.js$/,
+            exclude: /node_modules/,
+            use: [
+              {
+                loader: "babel-loader",
+                options: { presets: ["@babel/preset-env"] },
+              },
+            ],
+          };
+          config.plugins.push(new CleanWebpackPlugin());
+          config.plugins.push(new CompressionPlugin());
+          config.plugins.push(
+            new HtmlWebpackPlugin({
+              template: `${__dirname}/public/index.html`,
+              favicon: `${__dirname}/public/favicon.ico`,
+              minify: true,
+              title: "Walleto",
+            })
+          );
+          return config;
+        },
       },
     ],
   ],
