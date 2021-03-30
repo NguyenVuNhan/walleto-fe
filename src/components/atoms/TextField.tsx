@@ -57,7 +57,7 @@ const TextField = forwardRef<HTMLInputElement, Props>(
             error ? "error" : "",
           ].join(" ")}
           id={rest.name}
-          type="text"
+          type={type === "number" ? "text" : type}
           onKeyUp={toggle}
           onChange={textFieldHandler}
         />

@@ -1,4 +1,3 @@
-import { memo } from "react";
 import { connect, MapDispatchToProps, MapStateToProps } from "react-redux";
 import { addCategory, updateCategory } from "./CategoryModal.actions";
 import CategoryModalComponent from "./CategoryModal.component";
@@ -64,9 +63,7 @@ const mapDispatchToProps: MapDispatchToProps<DispatchProps, OwnProps> = (
 });
 
 export type Props = OwnProps & StateProps & DispatchProps;
-export default memo<OwnProps>(
-  connect(mapStateToProps, mapDispatchToProps)(CategoryModalComponent),
-  (prev, next) => {
-    return prev.open === next.open && prev.type === next.type;
-  }
-);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CategoryModalComponent);

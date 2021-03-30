@@ -4,6 +4,7 @@ import Alert from "src/components/atoms/Alert";
 import CheckBox from "src/components/atoms/CheckBox";
 import TextField from "src/components/atoms/TextField";
 import Modal from "src/components/organisms/Modal";
+import { numberValue } from "src/helpers/form";
 import { Props } from "./WalletModal.container";
 
 const WalletModal: FC<Props> = ({
@@ -45,7 +46,7 @@ const WalletModal: FC<Props> = ({
             label="Wallet name"
             name="name"
             ref={register({ required: "Wallet name is required" })}
-            error={errors.name && errors.name.message}
+            error={error?.errors?.name || (errors.name && errors.name.message)}
             defaultValue={wallet?.name}
           />
           <TextField
@@ -57,18 +58,22 @@ const WalletModal: FC<Props> = ({
               minLength: { value: 3, message: "Invalid currency" },
               maxLength: { value: 3, message: "Invalid currency" },
             })}
-            error={errors.currency && errors.currency.message}
+            error={
+              error?.errors?.currency ||
+              (errors.currency && errors.currency.message)
+            }
             defaultValue={wallet?.currency}
           />
           <TextField
             className="col-span-full sm:col-span-2 input-outlined"
             label="Initial Balance"
             name="balance"
-            ref={register({
-              setValueAs: (v: string) => parseInt(v.replaceAll(",", ""), 10),
-            })}
+            ref={register({ setValueAs: numberValue })}
             type="number"
-            error={errors.balance && errors.balance.message}
+            error={
+              error?.errors?.balance ||
+              (errors.balance && errors.balance.message)
+            }
             defaultValue={wallet?.balance || 0}
           />
           <CheckBox

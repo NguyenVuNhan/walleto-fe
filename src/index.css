@@ -100,7 +100,7 @@
 
   /* Input outlined */
   .input-outlined > .form-input {
-    @apply border ring-primary active:ring-2 focus:ring-2;
+    @apply border ring-primary;
   }
 
   .input-outlined > .form-input.error {

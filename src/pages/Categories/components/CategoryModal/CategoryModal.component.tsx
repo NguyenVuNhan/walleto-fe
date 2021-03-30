@@ -70,7 +70,7 @@ const CategoryModal: FC<Props> = ({
             label="Category name"
             name="name"
             ref={register({ required: "Category name is required" })}
-            error={errors.name && errors.name.message}
+            error={error?.errors?.name || (errors.name && errors.name.message)}
             defaultValue={category?.name}
           />
           {!category?.parent && (
@@ -80,6 +80,7 @@ const CategoryModal: FC<Props> = ({
               name="parent"
               ref={register}
               defaultValue={category?.parent || ""}
+              error={error?.errors?.parent || errors.parent?.message}
             >
               <option value="-1">None</option>
               {currentType === "Expense" &&

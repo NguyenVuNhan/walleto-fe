@@ -5,9 +5,7 @@ import { TransactionsState } from "./Transactions.reducer";
 
 interface OwnProps {}
 
-interface StateProps {
-  transactionData: TransactionsState;
-}
+interface StateProps extends TransactionsState {}
 
 interface DispatchProps {
   onGetTransactions(from?: string, to?: string): void;
@@ -16,7 +14,7 @@ interface DispatchProps {
 const mapStateToProps: MapStateToProps<StateProps, OwnProps> = ({
   transactions,
 }) => {
-  return { transactionData: transactions };
+  return { ...transactions };
 };
 
 const mapDispatchToProps: MapDispatchToProps<DispatchProps, OwnProps> = (

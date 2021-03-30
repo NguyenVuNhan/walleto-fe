@@ -1,5 +1,5 @@
 import { AnimatePresence, motion, Variants } from "framer-motion";
-import React, { FC } from "react";
+import React, { FC, memo } from "react";
 import { createPortal } from "react-dom";
 import BackDrop from "src/components/atoms/BackDrop";
 import { useClickOutside } from "src/hooks";
@@ -53,7 +53,7 @@ const Modal: FC<Props> = ({ className, children, onClose }) => {
           variants={variants}
           ref={ref}
           className={[
-            "inline-block overflow-hidden rounded-lg shadow-xl sm:max-w-lg sm:w-full overflow-visible",
+            "inline-block overflow-hidden rounded-lg shadow-xl w-full mx-2 sm:max-w-lg sm:w-full overflow-visible",
             className,
           ].join(" ")}
           role="dialog"
@@ -67,11 +67,14 @@ const Modal: FC<Props> = ({ className, children, onClose }) => {
   );
 };
 
-const ModalPortal: FC<Props> = (props) => {
-  return createPortal(
-    <AnimatePresence>{props.open && <Modal {...props} />}</AnimatePresence>,
-    document.getElementsByTagName("body")[0]
-  );
-};
+const ModalPortal: FC<Props> = memo<Props>(
+  (props) => {
+    return createPortal(
+      <AnimatePresence>{props.open && <Modal {...props} />}</AnimatePresence>,
+      document.getElementsByTagName("body")[0]
+    );
+  },
+  (prev, next) => prev.open === next.open
+);
 
 export default ModalPortal;

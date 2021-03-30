@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import TransactionModal from "./TransactionModal/TransactionModal.component";
+import TransactionModal from "./TransactionModal";
 
 const WalletAction = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -12,7 +12,11 @@ const WalletAction = () => {
       >
         Add Transaction
       </button>
-      <TransactionModal open={modalOpen} onClose={() => setModalOpen(false)} />
+      <TransactionModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        type="add"
+      />
     </>
   );
 };

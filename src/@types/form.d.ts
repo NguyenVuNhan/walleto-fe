@@ -10,7 +10,14 @@ interface RegisterForm {
   cpassword: string;
 }
 
-interface TransactionsForm {}
+interface TransactionForm {
+  note: string;
+  amount: number;
+  date: string;
+  exclude: boolean;
+  categoryId: number;
+  walletId: number;
+}
 
 interface WalletForm {
   name: string;

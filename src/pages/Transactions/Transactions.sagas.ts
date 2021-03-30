@@ -2,7 +2,8 @@ import * as types from "./Transactions.types";
 import * as actions from "./Transactions.actions";
 import { all, call, fork, put, takeEvery } from "redux-saga/effects";
 import { getTransactions, GetTransactionsRes } from "src/apis/transaction";
-import { watchOnGetTransaction } from "./components/TransactionItem";
+import { getTransactionSaga } from "./components/TransactionItem";
+import { transactionSaga } from "./components/TransactionModal";
 
 function* onGetTransactions({ payload }: types.GetTransactionsAction) {
   yield put(actions.getTransactionsRequest());
@@ -30,5 +31,9 @@ function* watchOnGetTransactions() {
 }
 
 export default function* transactionsSaga() {
-  yield all([fork(watchOnGetTransactions), fork(watchOnGetTransaction)]);
+  yield all([
+    fork(watchOnGetTransactions),
+    fork(getTransactionSaga),
+    fork(transactionSaga),
+  ]);
 }

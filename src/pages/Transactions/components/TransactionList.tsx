@@ -7,7 +7,7 @@ import DateHeader from "./DateHeader";
 import TransactionItem from "./TransactionItem";
 
 interface Props {
-  transactionData: TransactionsState;
+  transactionData: TransactionsState["transactions"];
 }
 
 const TransactionList = memo<Props>(({ transactionData }) => {
