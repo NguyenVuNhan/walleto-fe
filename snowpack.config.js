@@ -12,24 +12,24 @@ module.exports = {
     "@snowpack/plugin-dotenv",
     "@snowpack/plugin-react-refresh",
     "@snowpack/plugin-postcss",
-    [
-      "@snowpack/plugin-webpack",
-      {
-        extendConfig: (config) => {
-          config.plugins.push(new CleanWebpackPlugin());
-          config.plugins.push(new CompressionPlugin());
-          config.plugins.push(
-            new HtmlWebpackPlugin({
-              template: `${__dirname}/public/index.html`,
-              favicon: `${__dirname}/public/favicon.ico`,
-              minify: true,
-              title: "Walleto",
-            })
-          );
-          return config;
-        },
-      },
-    ],
+    // [
+    //   "@snowpack/plugin-webpack",
+    //   {
+    //     extendConfig: (config) => {
+    //       config.plugins.push(new CleanWebpackPlugin());
+    //       config.plugins.push(new CompressionPlugin());
+    //       config.plugins.push(
+    //         new HtmlWebpackPlugin({
+    //           template: `${__dirname}/public/index.html`,
+    //           favicon: `${__dirname}/public/favicon.ico`,
+    //           minify: true,
+    //           title: "Walleto",
+    //         })
+    //       );
+    //       return config;
+    //     },
+    //   },
+    // ],
   ],
   packageOptions: {
     types: true,

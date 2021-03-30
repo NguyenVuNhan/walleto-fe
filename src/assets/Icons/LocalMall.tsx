@@ -20,4 +20,3 @@ const LocalMallIcon: FC<Props> = ({ className }) => {
 };
 
 export default LocalMallIcon;
-

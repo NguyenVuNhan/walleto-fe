@@ -20,4 +20,3 @@ const AccountBallanceWalletIcon: FC<Props> = ({ className }) => {
 };
 
 export default AccountBallanceWalletIcon;
-

@@ -20,4 +20,3 @@ const AnalyticIcon: FC<Props> = ({ className }) => {
 };
 
 export default AnalyticIcon;
-

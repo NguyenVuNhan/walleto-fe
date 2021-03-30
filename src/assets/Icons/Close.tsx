@@ -20,4 +20,3 @@ const CloseIcon: FC<Props> = ({ className }) => {
 };
 
 export default CloseIcon;
-

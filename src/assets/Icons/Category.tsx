@@ -22,4 +22,3 @@ const CategoryIcon: FC<Props> = ({ className }) => {
 };
 
 export default CategoryIcon;
-

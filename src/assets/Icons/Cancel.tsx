@@ -20,4 +20,3 @@ const CancelIcon: FC<Props> = ({ className }) => {
 };
 
 export default CancelIcon;
-
