@@ -1,6 +1,6 @@
 import { connect, MapDispatchToProps, MapStateToProps } from "react-redux";
 import { categoriesActions, categoriesTypes } from "src/pages/Categories";
-import { walletsTypes, walletsActions } from "src/pages/Wallets";
+import { walletsActions, walletsTypes } from "src/pages/Wallets";
 import { addTransaction, updateTransaction } from "./TransactionModal.actions";
 import TransactionModalComponent from "./TransactionModal.component";
 import {
