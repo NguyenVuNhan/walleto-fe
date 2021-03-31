@@ -17,6 +17,7 @@
     "lint": "prettier --check \"src/**/*.{js,jsx,ts,tsx}\""
   },
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.13.10",
     "@babel/preset-react": "^7.13.13",
     "@babel/preset-typescript": "^7.13.0",
     "@snowpack/plugin-babel": "^2.1.6",
