@@ -1,7 +1,6 @@
 /* eslint-env node */
 /** @type {import("snowpack").SnowpackUserConfig } */
 
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
@@ -25,7 +24,6 @@ module.exports = {
               },
             ],
           };
-          config.plugins.push(new CleanWebpackPlugin());
           config.plugins.push(new CompressionPlugin());
           config.plugins.push(
             new HtmlWebpackPlugin({
