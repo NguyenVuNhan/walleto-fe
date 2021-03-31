@@ -14,8 +14,6 @@ import { loginActions } from "src/pages/Login";
 // Set axios base url
 if (import.meta.env.NODE_ENV === "production") {
   axios.defaults.baseURL = import.meta.env.SNOWPACK_PUBLIC_BASE_URL;
-} else {
-  axios.defaults.baseURL = "http://localhost:5000";
 }
 
 // Check for token
