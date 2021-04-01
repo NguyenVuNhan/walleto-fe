@@ -11,6 +11,10 @@ import { sagaMiddleware } from "./provider/store.js";
 import rootSaga from "./sagas/rootSaga.js";
 import { loginActions } from "src/pages/Login";
 
+console.log(import.meta.env.NODE_ENV);
+console.log(import.meta.env.MODE);
+console.log(process && process.env.NODE_ENV);
+
 // Set axios base url
 if (import.meta.env.MODE === "production") {
   axios.defaults.baseURL = import.meta.env.SNOWPACK_PUBLIC_BASE_URL;
