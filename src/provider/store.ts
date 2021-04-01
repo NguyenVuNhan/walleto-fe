@@ -1,6 +1,7 @@
 import rootReducer from "src/reducer/rootReducer";
 import { applyMiddleware, compose, createStore } from "redux";
 import createSagaMiddleware from "redux-saga";
+import { isDevelopment } from "./env";
 
 const initialState = {};
 
@@ -13,7 +14,7 @@ const store = createStore(
   initialState,
   compose(
     applyMiddleware(...middleware),
-    import.meta.env.MODE === "development"
+    isDevelopment
       ? window.__REDUX_DEVTOOLS_EXTENSION__ &&
           window.__REDUX_DEVTOOLS_EXTENSION__()
       : (f: any) => f
