@@ -13,10 +13,10 @@ const store = createStore(
   initialState,
   compose(
     applyMiddleware(...middleware),
-    import.meta.env.NODE_ENV === "production"
-      ? (f: any) => f
-      : window.__REDUX_DEVTOOLS_EXTENSION__ &&
+    import.meta.env.MODE === "development"
+      ? window.__REDUX_DEVTOOLS_EXTENSION__ &&
           window.__REDUX_DEVTOOLS_EXTENSION__()
+      : (f: any) => f
   )
 );
 

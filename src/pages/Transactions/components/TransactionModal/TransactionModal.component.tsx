@@ -29,8 +29,6 @@ const TransactionModal: FC<Props> = ({
     transaction ? (transaction.amount > 0 ? 1 : -1) : -1
   );
 
-  console.log(transaction, type);
-
   const callback = (type?: string) => {
     type === "success" && onClose && onClose();
   };

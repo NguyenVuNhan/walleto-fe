@@ -12,7 +12,7 @@ import rootSaga from "./sagas/rootSaga.js";
 import { loginActions } from "src/pages/Login";
 
 // Set axios base url
-if (import.meta.env.NODE_ENV === "production") {
+if (import.meta.env.MODE === "production") {
   axios.defaults.baseURL = import.meta.env.SNOWPACK_PUBLIC_BASE_URL;
 }
 
