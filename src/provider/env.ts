@@ -1,4 +1,4 @@
 export const isDevelopment =
-  (process ? process.env.NODE_ENV : import.meta.env) === "development";
+  import.meta.env.SNOWPACK_PUBLIC_MODE === "development";
 
 export const baseUrl = import.meta.env.SNOWPACK_PUBLIC_BASE_URL;

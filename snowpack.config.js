@@ -38,9 +38,6 @@ module.exports = {
       },
     ],
   ],
-  packageOptions: {
-    types: true,
-  },
   buildOptions: {
     out: "build",
     sourcemap: true,
