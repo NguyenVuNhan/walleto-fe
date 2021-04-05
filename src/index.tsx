@@ -10,12 +10,9 @@ import { store } from "./provider";
 import { sagaMiddleware } from "./provider/store.js";
 import rootSaga from "./sagas/rootSaga.js";
 import { loginActions } from "src/pages/Login";
-import { baseUrl, isDevelopment } from "./provider/env";
+import { baseUrl } from "./provider/env";
 
-// Set axios base url
-if (!isDevelopment) {
-  axios.defaults.baseURL = baseUrl;
-}
+axios.defaults.baseURL = baseUrl;
 
 // Check for token
 if (localStorage.jwtToken) {
