@@ -1,16 +1,19 @@
-import React, { memo } from "react";
+import React, { memo, useContext } from "react";
 import { NavLink } from "react-router-dom";
-import AccountBallanceWalletIcon from "src/assets/Icons/AccountBalanceWallet";
-import AnalyticIcon from "src/assets/Icons/Analytics";
-import CategoryIcon from "src/assets/Icons/Category";
-import ReceiptLongIcon from "src/assets/Icons/ReceiptLong";
+import { MdAccountBalanceWallet, MdAssessment } from "react-icons/md";
+import { GrTransaction } from "react-icons/gr";
+import { BiBox } from "react-icons/bi";
 import IconButton from "../atoms/IconButton";
+import { IconContext } from "react-icons";
 
 interface Props {
   open: boolean;
 }
 
 const Drawer = memo<Props>(({ open }) => {
+  const { className } = useContext(IconContext);
+  console.log(className);
+
   return (
     <aside
       className={[
@@ -29,7 +32,7 @@ const Drawer = memo<Props>(({ open }) => {
         }}
       >
         <IconButton className="mr-3">
-          <ReceiptLongIcon />
+          <GrTransaction />
         </IconButton>
         <p className="text-lg">Transaction</p>
       </NavLink>
@@ -39,7 +42,7 @@ const Drawer = memo<Props>(({ open }) => {
         activeClassName="bg-onSurface bg-opacity-10"
       >
         <IconButton className="mr-3">
-          <AnalyticIcon />
+          <MdAssessment />
         </IconButton>
         <p className="text-lg">Expenses Report</p>
       </NavLink>
@@ -50,7 +53,7 @@ const Drawer = memo<Props>(({ open }) => {
         activeClassName="bg-onSurface bg-opacity-10"
       >
         <IconButton className="mr-3">
-          <AccountBallanceWalletIcon />
+          <MdAccountBalanceWallet />
         </IconButton>
         <p className="text-lg">Wallets</p>
       </NavLink>
@@ -60,7 +63,7 @@ const Drawer = memo<Props>(({ open }) => {
         activeClassName="bg-onSurface bg-opacity-10"
       >
         <IconButton className="mr-3">
-          <CategoryIcon />
+          <BiBox />
         </IconButton>
         <p className="text-lg">Categories</p>
       </NavLink>

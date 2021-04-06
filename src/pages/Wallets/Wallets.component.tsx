@@ -1,11 +1,11 @@
 import { AnimatePresence } from "framer-motion";
 import React, { FC, useState } from "react";
-import AccountBallanceWalletIcon from "src/assets/Icons/AccountBalanceWallet";
 import Alert from "src/components/atoms/Alert";
 import { useInitFunction } from "src/hooks";
 import { Props } from "./Wallets.container";
 import Animation from "src/components/molecules/Animation";
 import WalletItem from "./components/WalletItem";
+import { MdAccountBalanceWallet } from "react-icons/md";
 
 const Wallets: FC<Props> = ({ wallets, error, onGetWallets, clearError }) => {
   // Fetch all wallets
@@ -46,7 +46,7 @@ const Wallets: FC<Props> = ({ wallets, error, onGetWallets, clearError }) => {
                     className="py-2 pl-3"
                     onClick={() => setActiveWallet(wallet.id)}
                   >
-                    <AccountBallanceWalletIcon className="float-left w-12 h-12 p-2 mr-4 bg-background bg-opacity-80 rounded-full text-secondary" />
+                    <MdAccountBalanceWallet className="float-left w-12 h-12 p-2 mr-4 bg-background bg-opacity-80 rounded-full text-secondary" />
                     <p className="font-semibold">{wallet.name}</p>
                     <p className="text-opacity-80">{wallet.balance}</p>
                     <div className="clear-both"></div>

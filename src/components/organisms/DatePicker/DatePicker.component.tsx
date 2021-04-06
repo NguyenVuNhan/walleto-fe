@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import CalendarTodayIcon from "src/assets/Icons/CalendarToday";
+import { IoMdCalendar } from "react-icons/io";
 import { MonthNames } from "src/constants/date.const";
 import Calendar from "./components/Calendar";
 import { DatePickerCtx } from "./DatePicker.context";
@@ -27,7 +27,7 @@ const DatePicker: React.FC<Props> = ({ date, onChange }) => {
           className="flex items-center justify-center p-2 text-sm font-semibold text-gray-700 bg-gray-200 rounded-l focus:outline-none"
           onClick={ctxValue.toggleCalendar}
         >
-          <CalendarTodayIcon />
+          <IoMdCalendar />
         </button>
         <input
           className="flex-grow px-3 text-black border-2 rounded-r outline-none focus:border-gray-400"

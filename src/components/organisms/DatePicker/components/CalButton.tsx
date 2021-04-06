@@ -1,6 +1,5 @@
 import React, { ButtonHTMLAttributes, FC } from "react";
-import ChevronLeftIcon from "src/assets/Icons/ChevronLeft";
-import ChevronRightIcon from "src/assets/Icons/ChevronRight";
+import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   chevron?: "right" | "left";
@@ -10,8 +9,8 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const CalButton: FC<Props> = ({ chevron, className, children, ...rest }) => {
-  if (chevron && chevron === "left") children = <ChevronLeftIcon />;
-  else if (chevron && chevron === "right") children = <ChevronRightIcon />;
+  if (chevron && chevron === "left") children = <MdChevronLeft />;
+  else if (chevron && chevron === "right") children = <MdChevronRight />;
 
   return (
     <button

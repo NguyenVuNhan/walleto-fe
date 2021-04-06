@@ -1,6 +1,6 @@
 import { AnimatePresence } from "framer-motion";
 import React, { Fragment, memo, useState } from "react";
-import LocalMallIcon from "src/assets/Icons/LocalMall";
+import { MdLocalMall } from "react-icons/md";
 import Animation from "src/components/molecules/Animation";
 import { TransactionsState } from "../Transactions.reducer";
 import DateHeader from "./DateHeader";
@@ -39,7 +39,7 @@ const TransactionList = memo<Props>(({ transactionData }) => {
                       className="p-2"
                       onClick={() => setActiveTransaction(transaction.id)}
                     >
-                      <LocalMallIcon className="float-left w-12 h-12 p-2 mr-4 bg-background bg-opacity-80 rounded-full text-secondary" />
+                      <MdLocalMall className="float-left w-12 h-12 p-2 mr-4 bg-background bg-opacity-80 rounded-full text-secondary" />
                       <div
                         className={[
                           "float-right",

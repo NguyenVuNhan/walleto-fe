@@ -1,6 +1,5 @@
 import React, { FC, useState } from "react";
-import CancelIcon from "src/assets/Icons/Cancel";
-import LocalMallIcon from "src/assets/Icons/LocalMall";
+import { MdCancel, MdLocalMall } from "react-icons/md";
 import Alert from "src/components/atoms/Alert";
 import IconButton from "src/components/atoms/IconButton";
 import { useInitFunction } from "src/hooks";
@@ -54,7 +53,7 @@ const Categories: FC<Props> = ({
       ].join(" ")}
       onClick={() => expandCategory(id)}
     >
-      <LocalMallIcon
+      <MdLocalMall
         className={[
           "p-2 mr-4 bg-background bg-opacity-80 rounded-full text-secondary",
           parent ? "w-10 h-10" : "w-12 h-12",
@@ -68,7 +67,7 @@ const Categories: FC<Props> = ({
               className="float-right text-red-400 hover-scale-110"
               onClick={() => setActiveCategory(-1)}
             >
-              <CancelIcon />
+              <MdCancel />
             </IconButton>
           </div>
           <div className="flex justify-end w-full p-2 gap-2">

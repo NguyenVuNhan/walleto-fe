@@ -1,6 +1,5 @@
 import React, { FC, useState } from "react";
-import CancelIcon from "src/assets/Icons/Cancel";
-import LocalMallIcon from "src/assets/Icons/LocalMall";
+import { MdLocalMall, MdCancel } from "react-icons/md";
 import IconButton from "src/components/atoms/IconButton";
 import Spinner from "src/components/atoms/Spinner";
 import Animation from "src/components/molecules/Animation";
@@ -30,12 +29,12 @@ const TransactionItem: FC<Props> = ({
         transaction={transaction}
       />
       <Animation className={["w-full bg-surface", className].join(" ")}>
-        <LocalMallIcon className="float-left w-12 h-12 p-2 mr-4 bg-background bg-opacity-80 rounded-full text-secondary" />
+        <MdLocalMall className="float-left w-12 h-12 p-2 mr-4 bg-background bg-opacity-80 rounded-full text-secondary" />
         <IconButton
           className="float-right text-red-400 hover-scale-110"
           onClick={onClose}
         >
-          <CancelIcon />
+          <MdCancel />
         </IconButton>
         <p className="font-semibold">{transaction.category.name}</p>
         <p>{transaction.wallet.name} Wallet</p>

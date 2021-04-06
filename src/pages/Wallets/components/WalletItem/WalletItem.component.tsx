@@ -1,6 +1,5 @@
 import React, { FC, useState } from "react";
-import AccountBallanceWalletIcon from "src/assets/Icons/AccountBalanceWallet";
-import CancelIcon from "src/assets/Icons/Cancel";
+import { MdCancel, MdAccountBalanceWallet } from "react-icons/md";
 import IconButton from "src/components/atoms/IconButton";
 import Spinner from "src/components/atoms/Spinner";
 import Animation from "src/components/molecules/Animation";
@@ -37,12 +36,12 @@ const WalletItem: FC<Props> = ({
     <>
       <Animation className={["py-2", className].join(" ")}>
         <div className="pl-3">
-          <AccountBallanceWalletIcon className="float-left w-12 h-12 p-2 mr-4 rounded-full bg-background bg-opacity-80 text-secondary" />
+          <MdAccountBalanceWallet className="float-left w-12 h-12 p-2 mr-4 rounded-full bg-background bg-opacity-80 text-secondary" />
           <IconButton
             className="float-right text-red-400 hover-scale-110"
             onClick={onClose}
           >
-            <CancelIcon />
+            <MdCancel />
           </IconButton>
           <p className="font-semibold">{wallet.name}</p>
           <div className="mx-16">
